@@ -1,0 +1,97 @@
+19:15:27 [INF][      Workbench]: Starting up Workbench
+19:15:27 [INF][   WBContext UI]: Initializing workbench context UI with these values:
+	base dir: /Applications/MySQLWorkbench.app/Contents/Resources
+	plugin path: /Applications/MySQLWorkbench.app/Contents/PlugIns
+	struct path: /Applications/MySQLWorkbench.app/Contents/Resources/grt
+	module path: /Applications/MySQLWorkbench.app/Contents/PlugIns:/Applications/MySQLWorkbench.app/Contents/Resources/plugins
+	library path: /Applications/MySQLWorkbench.app/Contents/Resources/libraries
+	user data dir: /Users/student/Library/Application Support/MySQL/Workbench
+	open at start: 
+	open type: 
+	run at startup: 
+	run type: 
+	Force SW rendering: No
+	Force OpenGL: No
+	quit when done: No
+19:15:27 [INF][      WBContext]: WbContext::init
+19:15:28 [INF][            WBA]: Looking for extension modules for WBA...
+19:15:28 [INF][            WBA]: 0 extension modules found
+19:15:28 [WRN][            grt]: Duplicate plugin name wb.tools.cmdlineClient	There is more than one plugin with the name wb.tools.cmdlineClient (in PyWbUtils and PyWbUtils).
+19:15:28 [WRN][            grt]: /Users/student/Library/Application Support/MySQL/Workbench/connections.xml:26: link '156FE612-6E20-41F5-9C10-5C9E4831B7C3' <object GrtObject> key=owner could not be resolved
+19:15:28 [WRN][            grt]: Duplicate plugin name wb.tools.cmdlineClient	There is more than one plugin with the name wb.tools.cmdlineClient (in PyWbUtils and PyWbUtils).
+19:15:28 [INF][      WBContext]: System info:
+ 	MySQL Workbench Community (GPL) for macOS version 8.0.31 CE build 2235049 (64 bit)
+	Configuration Directory: /Users/student/Library/Application Support/MySQL/Workbench
+	Data Directory: /Applications/MySQLWorkbench.app/Contents/Resources
+	Cairo Version: 1.17.4
+	OS: macOS 12.x Monterey x86_64
+	CPU: 8x Intel(R) Core(TM) i5-8279U CPU @ 2.40GHz - 8.00GiB RAM
+No video adapter info available
+
+19:15:29 [WRN][         mforms]: Resource file not found: wb_tile_sakila_light@2x.png
+19:15:29 [WRN][         mforms]: Resource file not found: wb_tile_manage_light@2x.png
+19:15:29 [WRN][         mforms]: Resource file not found: wb_tile_folder@2x.png
+19:15:29 [WRN][         mforms]: Resource file not found: wb_tile_network_light@2x.png
+19:15:29 [WRN][         mforms]: Resource file not found: wb_tile_plus_light@2x.png
+19:15:29 [WRN][         mforms]: Resource file not found: wb_tile_user_light@2x.png
+19:15:29 [WRN][         mforms]: Resource file not found: wb_tile_plus_light@2x.png
+19:15:29 [WRN][         mforms]: Resource file not found: wb_doc_sql@2x.png
+19:15:29 [WRN][         mforms]: Resource file not found: wb_tile_number_light@2x.png
+19:15:29 [WRN][         mforms]: Resource file not found: wb_close@2x.png
+19:15:29 [WRN][         mforms]: Resource file not found: wb_tile_open_light@2x.png
+19:15:29 [WRN][         mforms]: Resource file not found: wb_tile_more_light@2x.png
+19:15:29 [WRN][         mforms]: Resource file not found: wb_tile_sakila_light@2x.png
+19:15:29 [WRN][         mforms]: Resource file not found: wb_tile_manage_light@2x.png
+19:15:29 [WRN][         mforms]: Resource file not found: wb_tile_folder@2x.png
+19:15:29 [WRN][         mforms]: Resource file not found: wb_tile_network_light@2x.png
+19:15:29 [WRN][         mforms]: Resource file not found: wb_tile_plus_light@2x.png
+19:15:29 [WRN][         mforms]: Resource file not found: wb_tile_user_light@2x.png
+19:15:29 [WRN][         mforms]: Resource file not found: wb_tile_plus_light@2x.png
+19:15:29 [WRN][         mforms]: Resource file not found: wb_doc_sql@2x.png
+19:15:29 [WRN][         mforms]: Resource file not found: wb_tile_number_light@2x.png
+19:15:29 [WRN][         mforms]: Resource file not found: wb_close@2x.png
+19:15:29 [WRN][         mforms]: Resource file not found: wb_tile_open_light@2x.png
+19:15:29 [WRN][         mforms]: Resource file not found: wb_tile_more_light@2x.png
+19:15:30 [ERR][  GRTDispatcher]: exception in grt execute_task, continuing: Exception: Access denied for user 'root'@'localhost' (using password: NO)
+19:15:30 [ERR][  GRTDispatcher]: worker: task 'execute sql queries' has failed with error:.Access denied for user 'root'@'localhost' (using password: NO)
+19:15:33 [INF][SQL Editor Form]: Opened connection 'Local instance 3306' to MySQL Community Server - GPL version 8.0.32
+19:15:33 [WRN][         mforms]: Resource file not found: snippet_sql@2x.png
+19:15:33 [WRN][         mforms]: Resource file not found: busy_sidebar_mac@2x.png
+19:15:33 [WRN][         mforms]: Resource file not found: busy_sidebar_mac@2x.png
+19:15:33 [WRN][         mforms]: Resource file not found: busy_sidebar_mac@2x.png
+19:15:33 [WRN][         mforms]: Resource file not found: wb_perform_config@2x.png
+19:15:33 [WRN][         mforms]: Resource file not found: busy_sidebar_mac@2x.png
+19:15:34 [WRN][         mforms]: Resource file not found: editor_statement@2x.png
+19:15:34 [WRN][         mforms]: Resource file not found: editor_error@2x.png
+19:15:34 [WRN][         mforms]: Resource file not found: editor_breakpoint@2x.png
+19:15:34 [WRN][         mforms]: Resource file not found: editor_breakpoint_hit@2x.png
+19:15:34 [WRN][         mforms]: Resource file not found: editor_current_pos@2x.png
+19:15:34 [WRN][         mforms]: Resource file not found: editor_continue_on_error@2x.png
+19:15:34 [WRN][         mforms]: Resource file not found: ac_keyword@2x.png
+19:15:34 [WRN][         mforms]: Resource file not found: ac_schema@2x.png
+19:15:34 [WRN][         mforms]: Resource file not found: ac_table@2x.png
+19:15:34 [WRN][         mforms]: Resource file not found: ac_routine@2x.png
+19:15:34 [WRN][         mforms]: Resource file not found: ac_function@2x.png
+19:15:34 [WRN][         mforms]: Resource file not found: ac_view@2x.png
+19:15:34 [WRN][         mforms]: Resource file not found: ac_column@2x.png
+19:15:34 [WRN][         mforms]: Resource file not found: ac_operator@2x.png
+19:15:34 [WRN][         mforms]: Resource file not found: ac_engine@2x.png
+19:15:34 [WRN][         mforms]: Resource file not found: ac_trigger@2x.png
+19:15:34 [WRN][         mforms]: Resource file not found: ac_logfilegroup@2x.png
+19:15:34 [WRN][         mforms]: Resource file not found: ac_uservar@2x.png
+19:15:34 [WRN][         mforms]: Resource file not found: ac_sysvar@2x.png
+19:15:34 [WRN][         mforms]: Resource file not found: ac_tablespace@2x.png
+19:15:34 [WRN][         mforms]: Resource file not found: ac_event@2x.png
+19:15:34 [WRN][         mforms]: Resource file not found: ac_index@2x.png
+19:15:34 [WRN][         mforms]: Resource file not found: ac_user@2x.png
+19:15:34 [WRN][         mforms]: Resource file not found: ac_charset@2x.png
+19:15:34 [WRN][         mforms]: Resource file not found: ac_collation@2x.png
+19:15:34 [WRN][         mforms]: Resource file not found: busy_sidebar_mac@2x.png
+19:15:34 [WRN][         mforms]: Resource file not found: busy_sidebar_mac@2x.png
+19:15:34 [WRN][         mforms]: Resource file not found: wb_perform_config@2x.png
+19:15:34 [WRN][         mforms]: Resource file not found: busy_sidebar_mac@2x.png
+19:15:34 [WRN][         mforms]: Resource file not found: busy_sidebar_mac@2x.png
+19:15:38 [WRN][         mforms]: Resource file not found: busy_sidebar_mac@2x.png
+19:15:38 [WRN][         mforms]: Resource file not found: wb_perform_config@2x.png
+19:15:38 [WRN][         mforms]: Resource file not found: busy_sidebar_mac@2x.png
+19:15:38 [WRN][         mforms]: Resource file not found: busy_sidebar_mac@2x.png
