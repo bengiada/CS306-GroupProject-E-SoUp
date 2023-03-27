@@ -1,0 +1,1840 @@
+[1, 18:15:41] Apply changes to CS306: Applying object changes ...
+[1, 18:15:48] Applying changes to CS306...: 
+[1, 18:15:48] : Changes applied to CS306
+[1, 18:15:51] Apply changes to CS306: Changes applied
+[2, 18:22:03] DROP DATABASE [IF EXISTS] giraffe: Running...
+[2, 18:22:03] DROP DATABASE [IF EXISTS] giraffe: Error Code: 1064. You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '[IF EXISTS] giraffe' at line 1
+[3, 19:09:42] DROP DATABASE giraffe: Running...
+[3, 19:09:42] DROP DATABASE giraffe: 0 row(s) affected
+[1, 20:31:07] CREATE TABLE Countries (
+    iso_code VARCHAR(5) NOT NULL UNIQUE,
+    name VARCHAR(45),
+    PRIMARY KEY (iso_code)
+): Running...
+[1, 20:31:07] CREATE TABLE Countries (
+    iso_code VARCHAR(5) NOT NULL UNIQUE,
+    name VARCHAR(45),
+    PRIMARY KEY (iso_code)
+): 0 row(s) affected
+[2, 20:34:04] Apply changes to Countries: Applying object changes ...
+[2, 20:34:09] Apply changes to Countries: Selected name conflicts with existing table `Countries`.
+[3, 20:34:26] CREATE TABLE Yearly_Status (
+    date INT NOT NULL,
+    population INT,
+    GDP INT,
+    median_income INT,
+    iso_code VARCHAR(5) NOT NULL,
+    PRIMARY KEY (date),
+    FOREIGN KEY (iso_code) REFERENCES Countries(iso_code) ON DELETE CASCADE
+): Running...
+[3, 20:34:26] CREATE TABLE Yearly_Status (
+    date INT NOT NULL,
+    population INT,
+    GDP INT,
+    median_income INT,
+    iso_code VARCHAR(5) NOT NULL,
+    PRIMARY KEY (date),
+    FOREIGN KEY (iso_code) REFERENCES Countries(iso_code) ON DELETE CASCADE
+): 0 row(s) affected
+[4, 20:34:31] CREATE TABLE Access_to_Electricity (
+    date INT NOT NULL,
+    percentage INT,
+    iso_code VARCHAR(5) NOT NULL,
+    PRIMARY KEY (date),
+    FOREIGN KEY (iso_code) REFERENCES Countries(iso_code) ON DELETE CASCADE
+): Running...
+[4, 20:34:31] CREATE TABLE Access_to_Electricity (
+    date INT NOT NULL,
+    percentage INT,
+    iso_code VARCHAR(5) NOT NULL,
+    PRIMARY KEY (date),
+    FOREIGN KEY (iso_code) REFERENCES Countries(iso_code) ON DELETE CASCADE
+): 0 row(s) affected
+[5, 20:34:31] CREATE TABLE CO2_emissions (
+    date INT NOT NULL,
+    volume INT,
+    iso_code VARCHAR(5) NOT NULL,
+    PRIMARY KEY (date),
+    FOREIGN KEY (iso_code) REFERENCES Countries(iso_code) ON DELETE CASCADE
+): Running...
+[5, 20:34:31] CREATE TABLE CO2_emissions (
+    date INT NOT NULL,
+    volume INT,
+    iso_code VARCHAR(5) NOT NULL,
+    PRIMARY KEY (date),
+    FOREIGN KEY (iso_code) REFERENCES Countries(iso_code) ON DELETE CASCADE
+): 0 row(s) affected
+[6, 20:34:31] CREATE TABLE Energy_Production (
+    date INT NOT NULL,
+    total_production INT,
+    fossil INT,
+    nuclear INT,
+    renewable INT,
+    iso_code VARCHAR(5) NOT NULL,
+    PRIMARY KEY (date),
+    FOREIGN KEY (iso_code) REFERENCES Countries(iso_code) ON DELETE CASCADE
+): Running...
+[6, 20:34:31] CREATE TABLE Energy_Production (
+    date INT NOT NULL,
+    total_production INT,
+    fossil INT,
+    nuclear INT,
+    renewable INT,
+    iso_code VARCHAR(5) NOT NULL,
+    PRIMARY KEY (date),
+    FOREIGN KEY (iso_code) REFERENCES Countries(iso_code) ON DELETE CASCADE
+): 0 row(s) affected
+[7, 20:34:31] CREATE TABLE Energy_Consumption (
+    date INT NOT NULL,
+    amount INT,
+    iso_code VARCHAR(5) NOT NULL,
+    PRIMARY KEY (date),
+    FOREIGN KEY (iso_code) REFERENCES Countries(iso_code) ON DELETE CASCADE
+): Running...
+[7, 20:34:31] CREATE TABLE Energy_Consumption (
+    date INT NOT NULL,
+    amount INT,
+    iso_code VARCHAR(5) NOT NULL,
+    PRIMARY KEY (date),
+    FOREIGN KEY (iso_code) REFERENCES Countries(iso_code) ON DELETE CASCADE
+): 0 row(s) affected
+[1, 20:35:05] GRANT FILE ON *.* TO 'student'@'localhost': Running...
+[1, 20:35:05] GRANT FILE ON *.* TO 'student'@'localhost': Error Code: 1410. You are not allowed to create a user with GRANT
+[2, 20:42:32] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[2, 20:42:32] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[3, 20:42:32] SHOW DATABASES: Executing 
+[3, 20:42:32] SHOW DATABASES: OK
+[4, 20:42:49] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[4, 20:42:49] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[5, 20:42:49] SHOW COLUMNS FROM `CS306`.`access_to_electricity`: Executing 
+[5, 20:42:49] SHOW COLUMNS FROM `CS306`.`access_to_electricity`: OK
+[6, 20:43:09] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[6, 20:43:09] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[7, 20:43:09] SHOW DATABASES: Executing 
+[7, 20:43:09] SHOW DATABASES: OK
+[8, 20:43:17] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[8, 20:43:17] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[9, 20:43:17] SHOW COLUMNS FROM `CS306`.`co2_emissions`: Executing 
+[9, 20:43:17] SHOW COLUMNS FROM `CS306`.`co2_emissions`: OK
+[10, 20:44:41] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[10, 20:44:41] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[11, 20:44:41] SHOW COLUMNS FROM `CS306`.`co2_emissions`: Executing 
+[11, 20:44:41] SHOW COLUMNS FROM `CS306`.`co2_emissions`: OK
+[12, 20:45:49] LOAD DATA INFILE '</Users/student/Desktop/CS306 Files/Annual CO2 Final.csv'
+INTO TABLE CO2_emissions
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS
+(date, volume, iso_code): Running...
+[12, 20:45:49] LOAD DATA INFILE '</Users/student/Desktop/CS306 Files/Annual CO2 Final.csv'
+INTO TABLE CO2_emissions
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS
+(date, volume, iso_code): Error Code: 1290. The MySQL server is running with the --secure-file-priv option so it cannot execute this statement
+[13, 20:47:35] GRANT ALL PRIVILEGES ON . TO'student'@'localhost': Running...
+[13, 20:47:35] GRANT ALL PRIVILEGES ON . TO'student'@'localhost': Error Code: 1064. You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '. TO'student'@'localhost'' at line 1
+[14, 20:48:01] GRANT ALL PRIVILEGES ON .* TO 'student'@'localhost': Running...
+[14, 20:48:01] GRANT ALL PRIVILEGES ON .* TO 'student'@'localhost': Error Code: 1064. You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '.* TO 'student'@'localhost'' at line 1
+[15, 20:49:32] CREATE USER 'foo'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password': Running...
+[15, 20:49:32] CREATE USER 'foo'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password': 0 row(s) affected
+[16, 20:49:44] GRANT ALL PRIVILEGES ON database_name.* TO'foo'@'localhost': Running...
+[16, 20:49:44] GRANT ALL PRIVILEGES ON database_name.* TO'foo'@'localhost': 0 row(s) affected
+[17, 20:50:00] LOAD DATA INFILE '</Users/student/Desktop/CS306 Files/Annual CO2 Final.csv'
+INTO TABLE CO2_emissions
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS
+(date, volume, iso_code): Running...
+[17, 20:50:00] LOAD DATA INFILE '</Users/student/Desktop/CS306 Files/Annual CO2 Final.csv'
+INTO TABLE CO2_emissions
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS
+(date, volume, iso_code): Error Code: 1290. The MySQL server is running with the --secure-file-priv option so it cannot execute this statement
+[1, 20:50:49] LOAD DATA INFILE '</Users/student/Desktop/CS306 Files/Annual CO2 Final.csv'
+INTO TABLE CO2_emissions
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS
+(date, volume, iso_code): Running...
+[1, 20:50:49] LOAD DATA INFILE '</Users/student/Desktop/CS306 Files/Annual CO2 Final.csv'
+INTO TABLE CO2_emissions
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS
+(date, volume, iso_code): Error Code: 1290. The MySQL server is running with the --secure-file-priv option so it cannot execute this statement
+[2, 20:52:05] SHOW VARIABLES LIKE "secure_file_priv": Running...
+[2, 20:52:05] SHOW VARIABLES LIKE "secure_file_priv": Fetching...
+[2, 20:52:05] SHOW VARIABLES LIKE "secure_file_priv": 1 row(s) returned
+[1, 20:52:20] SHOW VARIABLES LIKE "secure_file_priv": Running...
+[1, 20:52:20] SHOW VARIABLES LIKE "secure_file_priv": Fetching...
+[1, 20:52:20] SHOW VARIABLES LIKE "secure_file_priv": 1 row(s) returned
+[1, 20:54:11] SELECT * FROM CS306.CO2_emissions
+LIMIT 0, 1000
+: Running...
+[1, 20:54:11] SELECT * FROM CS306.CO2_emissions
+LIMIT 0, 1000
+: Fetching...
+[1, 20:54:11] SELECT * FROM CS306.CO2_emissions
+LIMIT 0, 1000
+: 0 row(s) returned
+[1, 20:57:05] LOAD DATA INFILE '</Users/student/Desktop/CS306 Files/Annual CO2 Final.csv'
+INTO TABLE CO2_emissions
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS
+(date, volume, iso_code): Running...
+[1, 20:57:05] LOAD DATA INFILE '</Users/student/Desktop/CS306 Files/Annual CO2 Final.csv'
+INTO TABLE CO2_emissions
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS
+(date, volume, iso_code): Error Code: 1290. The MySQL server is running with the --secure-file-priv option so it cannot execute this statement
+[2, 20:57:41] SHOW VARIABLES LIKE "secure_file_priv": Running...
+[2, 20:57:41] SHOW VARIABLES LIKE "secure_file_priv": Fetching...
+[2, 20:57:41] SHOW VARIABLES LIKE "secure_file_priv": 1 row(s) returned
+[3, 20:57:59] EXPLAIN SHOW VARIABLES LIKE "secure_file_priv": Executing 
+[3, 20:57:59] EXPLAIN SHOW VARIABLES LIKE "secure_file_priv": Error Code: 1064
+You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'SHOW VARIABLES LIKE "secure_file_priv"' at line 1
+[4, 20:58:03] SHOW VARIABLES LIKE "secure_file_priv": Running...
+[4, 20:58:03] SHOW VARIABLES LIKE "secure_file_priv": Fetching...
+[4, 20:58:03] SHOW VARIABLES LIKE "secure_file_priv": 1 row(s) returned
+[5, 20:59:47] LOAD DATA INFILE '</Users/student/Desktop/CS306 Files/Annual CO2 Final.csv'
+INTO TABLE CO2_emissions
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS
+(date, volume, iso_code): Running...
+[5, 20:59:47] LOAD DATA INFILE '</Users/student/Desktop/CS306 Files/Annual CO2 Final.csv'
+INTO TABLE CO2_emissions
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS
+(date, volume, iso_code): Error Code: 1290. The MySQL server is running with the --secure-file-priv option so it cannot execute this statement
+[6, 21:00:08] SHOW VARIABLES LIKE 'secure_file_priv': Running...
+[6, 21:00:08] SHOW VARIABLES LIKE 'secure_file_priv': Fetching...
+[6, 21:00:08] SHOW VARIABLES LIKE 'secure_file_priv': 1 row(s) returned
+[7, 21:00:51] secure_file_priv = "": Running...
+[7, 21:00:51] secure_file_priv = "": Error Code: 1064. You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'secure_file_priv = ""' at line 1
+[8, 21:01:23] LOAD DATA INFILE '</Users/student/Desktop/CS306 Files/Annual CO2 Final.csv'
+INTO TABLE CO2_emissions
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS
+(date, volume, iso_code): Running...
+[8, 21:01:23] LOAD DATA INFILE '</Users/student/Desktop/CS306 Files/Annual CO2 Final.csv'
+INTO TABLE CO2_emissions
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS
+(date, volume, iso_code): Error Code: 1290. The MySQL server is running with the --secure-file-priv option so it cannot execute this statement
+[9, 21:05:40] LOAD DATA INFILE '/Users/student/Desktop/CS306 Files/Annual CO2 Final.csv'
+INTO TABLE CO2_emissions
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS
+(date, volume, iso_code): Running...
+[9, 21:05:40] LOAD DATA INFILE '/Users/student/Desktop/CS306 Files/Annual CO2 Final.csv'
+INTO TABLE CO2_emissions
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS
+(date, volume, iso_code): Error Code: 1290. The MySQL server is running with the --secure-file-priv option so it cannot execute this statement
+[10, 21:06:32] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[10, 21:06:32] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[11, 21:06:32] SHOW DATABASES: Executing 
+[11, 21:06:32] SHOW DATABASES: OK
+[12, 21:06:59] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[12, 21:06:59] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[13, 21:06:59] SHOW COLUMNS FROM `CS306`.`co2_emissions`: Executing 
+[13, 21:06:59] SHOW COLUMNS FROM `CS306`.`co2_emissions`: OK
+[14, 21:10:39] LOAD DATA INFILE '/Users/student/Desktop/CS306 Files/Annual CO2 Final.csv'
+INTO TABLE CO2_emissions
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS
+(date, volume, iso_code): Running...
+[14, 21:10:39] LOAD DATA INFILE '/Users/student/Desktop/CS306 Files/Annual CO2 Final.csv'
+INTO TABLE CO2_emissions
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS
+(date, volume, iso_code): Error Code: 1290. The MySQL server is running with the --secure-file-priv option so it cannot execute this statement
+[15, 21:17:39] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[15, 21:17:39] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[16, 21:17:39] SHOW DATABASES: Executing 
+[16, 21:17:39] SHOW DATABASES: OK
+[17, 21:17:59] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[17, 21:17:59] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[18, 21:17:59] SHOW COLUMNS FROM `CS306`.`yearly_status`: Executing 
+[18, 21:17:59] SHOW COLUMNS FROM `CS306`.`yearly_status`: OK
+[19, 21:19:20] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[19, 21:19:20] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[20, 21:19:20] SHOW COLUMNS FROM `CS306`.`yearly_status`: Executing 
+[20, 21:19:20] SHOW COLUMNS FROM `CS306`.`yearly_status`: OK
+[21, 21:19:35] LOAD DATA INFILE '/Users/student/Desktop/CS306 Files/Annual CO2 Final.csv'
+INTO TABLE CO2_emissions
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS
+(date, volume, iso_code): Running...
+[21, 21:19:35] LOAD DATA INFILE '/Users/student/Desktop/CS306 Files/Annual CO2 Final.csv'
+INTO TABLE CO2_emissions
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS
+(date, volume, iso_code): Error Code: 1290. The MySQL server is running with the --secure-file-priv option so it cannot execute this statement
+[22, 21:19:42] LOAD DATA INFILE '/Users/student/Desktop/CS306 Files/Annual CO2 Final.csv'
+INTO TABLE CO2_emissions
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS
+(date, volume, iso_code): Running...
+[22, 21:19:42] LOAD DATA INFILE '/Users/student/Desktop/CS306 Files/Annual CO2 Final.csv'
+INTO TABLE CO2_emissions
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS
+(date, volume, iso_code): Error Code: 1290. The MySQL server is running with the --secure-file-priv option so it cannot execute this statement
+[23, 21:20:11] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[23, 21:20:11] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[24, 21:20:11] SHOW DATABASES: Executing 
+[24, 21:20:11] SHOW DATABASES: OK
+[25, 21:20:14] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[25, 21:20:14] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[26, 21:20:14] SHOW TABLES FROM `CS306` like 'spotify_playlist_analysis': Executing 
+[26, 21:20:14] SHOW TABLES FROM `CS306` like 'spotify_playlist_analysis': OK
+[27, 21:23:20] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[27, 21:23:20] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[28, 21:23:20] SHOW DATABASES: Executing 
+[28, 21:23:20] SHOW DATABASES: OK
+[29, 21:23:27] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[29, 21:23:27] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[30, 21:23:27] SHOW COLUMNS FROM `CS306`.`co2_emissions`: Executing 
+[30, 21:23:27] SHOW COLUMNS FROM `CS306`.`co2_emissions`: OK
+[31, 21:24:51] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[31, 21:24:51] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[32, 21:24:51] SHOW DATABASES: Executing 
+[32, 21:24:51] SHOW DATABASES: OK
+[33, 21:24:59] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[33, 21:24:59] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[34, 21:24:59] SHOW COLUMNS FROM `CS306`.`yearly_status`: Executing 
+[34, 21:24:59] SHOW COLUMNS FROM `CS306`.`yearly_status`: OK
+[35, 21:25:19] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[35, 21:25:19] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[36, 21:25:19] SHOW COLUMNS FROM `CS306`.`yearly_status`: Executing 
+[36, 21:25:19] SHOW COLUMNS FROM `CS306`.`yearly_status`: OK
+[37, 21:25:53] PREPARE stmt FROM 'INSERT INTO `CS306`.`yearly_status` (`iso_code`,`date`,`population`) VALUES(?,?,?)': Executing 
+[37, 21:25:53] PREPARE stmt FROM 'INSERT INTO `CS306`.`yearly_status` (`iso_code`,`date`,`population`) VALUES(?,?,?)': OK
+[38, 21:26:03] DEALLOCATE PREPARE stmt: Executing 
+[38, 21:26:03] DEALLOCATE PREPARE stmt: OK
+[39, 21:26:31] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[39, 21:26:31] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[40, 21:26:31] SHOW DATABASES: Executing 
+[40, 21:26:31] SHOW DATABASES: OK
+[41, 21:26:35] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[41, 21:26:35] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[42, 21:26:35] SHOW COLUMNS FROM `CS306`.`countries`: Executing 
+[42, 21:26:35] SHOW COLUMNS FROM `CS306`.`countries`: OK
+[43, 21:26:46] PREPARE stmt FROM 'INSERT INTO `CS306`.`countries` (`name`,`iso_code`) VALUES(?,?)': Executing 
+[43, 21:26:46] PREPARE stmt FROM 'INSERT INTO `CS306`.`countries` (`name`,`iso_code`) VALUES(?,?)': OK
+[44, 21:26:52] DEALLOCATE PREPARE stmt: Executing 
+[44, 21:26:52] DEALLOCATE PREPARE stmt: OK
+[45, 21:27:30] SELECT * FROM CS306.Countries
+LIMIT 0, 1000
+: Running...
+[45, 21:27:30] SELECT * FROM CS306.Countries
+LIMIT 0, 1000
+: Fetching...
+[45, 21:27:30] SELECT * FROM CS306.Countries
+LIMIT 0, 1000
+: 120 row(s) returned
+[46, 21:27:46] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[46, 21:27:46] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[47, 21:27:46] SHOW DATABASES: Executing 
+[47, 21:27:46] SHOW DATABASES: OK
+[48, 21:27:51] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[48, 21:27:51] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[49, 21:27:51] SHOW COLUMNS FROM `CS306`.`yearly_status`: Executing 
+[49, 21:27:51] SHOW COLUMNS FROM `CS306`.`yearly_status`: OK
+[50, 21:28:05] PREPARE stmt FROM 'INSERT INTO `CS306`.`yearly_status` (`iso_code`,`date`,`population`) VALUES(?,?,?)': Executing 
+[50, 21:28:05] PREPARE stmt FROM 'INSERT INTO `CS306`.`yearly_status` (`iso_code`,`date`,`population`) VALUES(?,?,?)': OK
+[51, 21:28:12] DEALLOCATE PREPARE stmt: Executing 
+[51, 21:28:12] DEALLOCATE PREPARE stmt: OK
+[52, 21:29:26] SELECT * From Yearly_Status
+LIMIT 0, 1000
+: Running...
+[52, 21:29:26] SELECT * From Yearly_Status
+LIMIT 0, 1000
+: Fetching...
+[52, 21:29:26] SELECT * From Yearly_Status
+LIMIT 0, 1000
+: 31 row(s) returned
+[53, 21:30:18] SELECT * 
+From Yearly_Status
+WHERE iso_code = 'USA'
+LIMIT 0, 1000
+: Running...
+[53, 21:30:18] SELECT * 
+From Yearly_Status
+WHERE iso_code = 'USA'
+LIMIT 0, 1000
+: Fetching...
+[53, 21:30:18] SELECT * 
+From Yearly_Status
+WHERE iso_code = 'USA'
+LIMIT 0, 1000
+: 0 row(s) returned
+[54, 21:30:37] DROP Yearly_Status: Running...
+[54, 21:30:37] DROP Yearly_Status: Error Code: 1064. You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'Yearly_Status' at line 1
+[55, 21:30:59] DROP TABLE Yearly_Status: Running...
+[55, 21:30:59] DROP TABLE Yearly_Status: 0 row(s) affected
+[56, 21:32:15] CREATE TABLE Yearly_Status (
+    date INT NOT NULL,
+    population INT,
+    GDP INT,
+    median_income INT,
+    iso_code VARCHAR(5) NOT NULL,
+    PRIMARY KEY (date, iso_code),
+    FOREIGN KEY (iso_code) REFERENCES Countries(iso_code) ON DELETE CASCADE
+): Running...
+[56, 21:32:15] CREATE TABLE Yearly_Status (
+    date INT NOT NULL,
+    population INT,
+    GDP INT,
+    median_income INT,
+    iso_code VARCHAR(5) NOT NULL,
+    PRIMARY KEY (date, iso_code),
+    FOREIGN KEY (iso_code) REFERENCES Countries(iso_code) ON DELETE CASCADE
+): 0 row(s) affected
+[57, 21:32:36] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[57, 21:32:36] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[58, 21:32:36] SHOW DATABASES: Executing 
+[58, 21:32:36] SHOW DATABASES: OK
+[59, 21:32:41] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[59, 21:32:41] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[60, 21:32:41] SHOW COLUMNS FROM `CS306`.`yearly_status`: Executing 
+[60, 21:32:41] SHOW COLUMNS FROM `CS306`.`yearly_status`: OK
+[61, 21:32:52] PREPARE stmt FROM 'INSERT INTO `CS306`.`yearly_status` (`iso_code`,`date`,`population`) VALUES(?,?,?)': Executing 
+[61, 21:32:52] PREPARE stmt FROM 'INSERT INTO `CS306`.`yearly_status` (`iso_code`,`date`,`population`) VALUES(?,?,?)': OK
+[62, 21:33:00] DEALLOCATE PREPARE stmt: Executing 
+[62, 21:33:00] DEALLOCATE PREPARE stmt: OK
+[63, 21:33:28] SELECT * FROM Yearly_Status
+LIMIT 0, 1000
+: Running...
+[63, 21:33:28] SELECT * FROM Yearly_Status
+LIMIT 0, 1000
+: Fetching...
+[63, 21:33:28] SELECT * FROM Yearly_Status
+LIMIT 0, 1000
+: 1000 row(s) returned
+[64, 21:34:05] DROP TABLE Yearly_Status: Running...
+[64, 21:34:05] DROP TABLE Yearly_Status: 0 row(s) affected
+[65, 21:34:13] CREATE TABLE Yearly_Status (
+    date INT NOT NULL,
+    population INT,
+    GDP INT,
+    median_income INT,
+    iso_code VARCHAR(5) NOT NULL,
+    PRIMARY KEY (iso_code ,date),
+    FOREIGN KEY (iso_code) REFERENCES Countries(iso_code) ON DELETE CASCADE
+): Running...
+[65, 21:34:13] CREATE TABLE Yearly_Status (
+    date INT NOT NULL,
+    population INT,
+    GDP INT,
+    median_income INT,
+    iso_code VARCHAR(5) NOT NULL,
+    PRIMARY KEY (iso_code ,date),
+    FOREIGN KEY (iso_code) REFERENCES Countries(iso_code) ON DELETE CASCADE
+): 0 row(s) affected
+[66, 21:34:21] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[66, 21:34:21] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[67, 21:34:21] SHOW DATABASES: Executing 
+[67, 21:34:21] SHOW DATABASES: OK
+[68, 21:34:24] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[68, 21:34:24] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[69, 21:34:24] SHOW COLUMNS FROM `CS306`.`yearly_status`: Executing 
+[69, 21:34:24] SHOW COLUMNS FROM `CS306`.`yearly_status`: OK
+[70, 21:34:35] PREPARE stmt FROM 'INSERT INTO `CS306`.`yearly_status` (`iso_code`,`date`,`population`) VALUES(?,?,?)': Executing 
+[70, 21:34:35] PREPARE stmt FROM 'INSERT INTO `CS306`.`yearly_status` (`iso_code`,`date`,`population`) VALUES(?,?,?)': OK
+[71, 21:34:42] DEALLOCATE PREPARE stmt: Executing 
+[71, 21:34:42] DEALLOCATE PREPARE stmt: OK
+[72, 21:36:10] DROP TABLE Access_to_Electricity: Running...
+[72, 21:36:10] DROP TABLE Access_to_Electricity: 0 row(s) affected
+[73, 21:36:16] DROP TABLE Access_to_Electricity: Running...
+[73, 21:36:16] DROP TABLE Access_to_Electricity: Error Code: 1051. Unknown table 'cs306.access_to_electricity'
+[74, 21:36:27] DROP TABLE CO2_emissions: Running...
+[74, 21:36:27] DROP TABLE CO2_emissions: 0 row(s) affected
+[75, 21:36:36] DROP TABLE Enery_consumption: Running...
+[75, 21:36:36] DROP TABLE Enery_consumption: Error Code: 1051. Unknown table 'cs306.enery_consumption'
+[76, 21:36:42] DROP TABLE Enery_Consumption: Running...
+[76, 21:36:42] DROP TABLE Enery_Consumption: Error Code: 1051. Unknown table 'cs306.enery_consumption'
+[77, 21:36:50] DROP TABLE Energy_Consumption: Running...
+[77, 21:36:50] DROP TABLE Energy_Consumption: 0 row(s) affected
+[78, 21:36:58] DROP TABLE Energy_Production: Running...
+[78, 21:36:58] DROP TABLE Energy_Production: 0 row(s) affected
+[79, 21:37:54] DROP TABLE Energy_Consumption: Running...
+[79, 21:37:54] DROP TABLE Energy_Consumption: Error Code: 1051. Unknown table 'cs306.energy_consumption'
+[80, 21:38:05] CREATE TABLE Access_to_Electricity (
+    date INT NOT NULL,
+    percentage INT,
+    iso_code VARCHAR(5) NOT NULL,
+    PRIMARY KEY (iso_code, date),
+    FOREIGN KEY (iso_code) REFERENCES Countries(iso_code) ON DELETE CASCADE
+): Running...
+[80, 21:38:05] CREATE TABLE Access_to_Electricity (
+    date INT NOT NULL,
+    percentage INT,
+    iso_code VARCHAR(5) NOT NULL,
+    PRIMARY KEY (iso_code, date),
+    FOREIGN KEY (iso_code) REFERENCES Countries(iso_code) ON DELETE CASCADE
+): 0 row(s) affected
+[81, 21:38:10] CREATE TABLE CO2_emissions (
+    date INT NOT NULL,
+    volume INT,
+    iso_code VARCHAR(5) NOT NULL,
+    PRIMARY KEY (iso_code, date),
+    FOREIGN KEY (iso_code) REFERENCES Countries(iso_code) ON DELETE CASCADE
+): Running...
+[81, 21:38:10] CREATE TABLE CO2_emissions (
+    date INT NOT NULL,
+    volume INT,
+    iso_code VARCHAR(5) NOT NULL,
+    PRIMARY KEY (iso_code, date),
+    FOREIGN KEY (iso_code) REFERENCES Countries(iso_code) ON DELETE CASCADE
+): 0 row(s) affected
+[82, 21:38:17] CREATE TABLE Energy_Production (
+    date INT NOT NULL,
+    total_production INT,
+    fossil INT,
+    nuclear INT,
+    renewable INT,
+    iso_code VARCHAR(5) NOT NULL,
+    PRIMARY KEY (iso_code, date),
+    FOREIGN KEY (iso_code) REFERENCES Countries(iso_code) ON DELETE CASCADE
+): Running...
+[82, 21:38:17] CREATE TABLE Energy_Production (
+    date INT NOT NULL,
+    total_production INT,
+    fossil INT,
+    nuclear INT,
+    renewable INT,
+    iso_code VARCHAR(5) NOT NULL,
+    PRIMARY KEY (iso_code, date),
+    FOREIGN KEY (iso_code) REFERENCES Countries(iso_code) ON DELETE CASCADE
+): 0 row(s) affected
+[83, 21:38:46] CREATE TABLE Energy_Consumption (
+    date INT NOT NULL,
+    amount INT,
+    iso_code VARCHAR(5) NOT NULL,
+    PRIMARY KEY (iso_code, date),
+    FOREIGN KEY (iso_code) REFERENCES Countries(iso_code) ON DELETE CASCADE
+): Running...
+[83, 21:38:46] CREATE TABLE Energy_Consumption (
+    date INT NOT NULL,
+    amount INT,
+    iso_code VARCHAR(5) NOT NULL,
+    PRIMARY KEY (iso_code, date),
+    FOREIGN KEY (iso_code) REFERENCES Countries(iso_code) ON DELETE CASCADE
+): 0 row(s) affected
+[84, 21:39:12] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[84, 21:39:12] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[85, 21:39:12] SHOW DATABASES: Executing 
+[85, 21:39:12] SHOW DATABASES: OK
+[86, 21:39:16] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[86, 21:39:16] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[87, 21:39:16] SHOW COLUMNS FROM `CS306`.`yearly_status`: Executing 
+[87, 21:39:16] SHOW COLUMNS FROM `CS306`.`yearly_status`: OK
+[88, 21:39:29] PREPARE stmt FROM 'INSERT INTO `CS306`.`yearly_status` (`iso_code`,`date`,`GDP`) VALUES(?,?,?)': Executing 
+[88, 21:39:29] PREPARE stmt FROM 'INSERT INTO `CS306`.`yearly_status` (`iso_code`,`date`,`GDP`) VALUES(?,?,?)': OK
+[89, 21:39:37] DEALLOCATE PREPARE stmt: Executing 
+[89, 21:39:37] DEALLOCATE PREPARE stmt: OK
+[90, 21:40:08] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[90, 21:40:08] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[91, 21:40:08] SHOW DATABASES: Executing 
+[91, 21:40:08] SHOW DATABASES: OK
+[92, 21:40:13] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[92, 21:40:13] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[93, 21:40:13] SHOW COLUMNS FROM `CS306`.`energy_production`: Executing 
+[93, 21:40:13] SHOW COLUMNS FROM `CS306`.`energy_production`: OK
+[94, 21:40:41] PREPARE stmt FROM 'INSERT INTO `CS306`.`energy_production` (`iso_code`,`date`,`fossil`,`nuclear`,`renewable`) VALUES(?,?,?,?,?)': Executing 
+[94, 21:40:41] PREPARE stmt FROM 'INSERT INTO `CS306`.`energy_production` (`iso_code`,`date`,`fossil`,`nuclear`,`renewable`) VALUES(?,?,?,?,?)': OK
+[95, 21:40:55] DEALLOCATE PREPARE stmt: Executing 
+[95, 21:40:55] DEALLOCATE PREPARE stmt: OK
+[96, 21:41:21] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[96, 21:41:21] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[97, 21:41:21] SHOW DATABASES: Executing 
+[97, 21:41:21] SHOW DATABASES: OK
+[98, 21:41:25] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[98, 21:41:25] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[99, 21:41:25] SHOW COLUMNS FROM `CS306`.`energy_consumption`: Executing 
+[99, 21:41:25] SHOW COLUMNS FROM `CS306`.`energy_consumption`: OK
+[100, 21:41:36] PREPARE stmt FROM 'INSERT INTO `CS306`.`energy_consumption` (`iso_code`,`date`,`amount`) VALUES(?,?,?)': Executing 
+[100, 21:41:36] PREPARE stmt FROM 'INSERT INTO `CS306`.`energy_consumption` (`iso_code`,`date`,`amount`) VALUES(?,?,?)': OK
+[101, 21:41:55] DEALLOCATE PREPARE stmt: Executing 
+[101, 21:41:55] DEALLOCATE PREPARE stmt: OK
+[102, 21:42:13] SELECT * FROM Energy_Consumption
+LIMIT 0, 1000
+: Running...
+[102, 21:42:13] SELECT * FROM Energy_Consumption
+LIMIT 0, 1000
+: Fetching...
+[102, 21:42:13] SELECT * FROM Energy_Consumption
+LIMIT 0, 1000
+: 1000 row(s) returned
+[103, 21:42:45] SELECT * FROM Energy_Consumption
+WHERE iso_code = 'USA'
+LIMIT 0, 1000
+: Running...
+[103, 21:42:45] SELECT * FROM Energy_Consumption
+WHERE iso_code = 'USA'
+LIMIT 0, 1000
+: Fetching...
+[103, 21:42:45] SELECT * FROM Energy_Consumption
+WHERE iso_code = 'USA'
+LIMIT 0, 1000
+: 57 row(s) returned
+[104, 21:43:33] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[104, 21:43:33] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[105, 21:43:33] SHOW DATABASES: Executing 
+[105, 21:43:33] SHOW DATABASES: OK
+[106, 21:43:41] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[106, 21:43:41] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[107, 21:43:41] SHOW COLUMNS FROM `CS306`.`co2_emissions`: Executing 
+[107, 21:43:41] SHOW COLUMNS FROM `CS306`.`co2_emissions`: OK
+[108, 21:44:18] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[108, 21:44:18] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[109, 21:44:18] SHOW DATABASES: Executing 
+[109, 21:44:18] SHOW DATABASES: OK
+[110, 21:44:26] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[110, 21:44:26] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[111, 21:44:26] SHOW COLUMNS FROM `CS306`.`access_to_electricity`: Executing 
+[111, 21:44:26] SHOW COLUMNS FROM `CS306`.`access_to_electricity`: OK
+[112, 21:52:57] SELECT * FROM Access_to_Electricity
+LIMIT 0, 1000
+: Running...
+[112, 21:52:57] SELECT * FROM Access_to_Electricity
+LIMIT 0, 1000
+: Fetching...
+[112, 21:52:57] SELECT * FROM Access_to_Electricity
+LIMIT 0, 1000
+: 0 row(s) returned
+[113, 21:53:19] SELECT * FROM CO2_emissions
+LIMIT 0, 1000
+: Running...
+[113, 21:53:19] SELECT * FROM CO2_emissions
+LIMIT 0, 1000
+: Fetching...
+[113, 21:53:19] SELECT * FROM CO2_emissions
+LIMIT 0, 1000
+: 0 row(s) returned
+[114, 21:53:30] SELECT * FROM Countries
+LIMIT 0, 1000
+: Running...
+[114, 21:53:30] SELECT * FROM Countries
+LIMIT 0, 1000
+: Fetching...
+[114, 21:53:30] SELECT * FROM Countries
+LIMIT 0, 1000
+: 120 row(s) returned
+[115, 21:53:43] SELECT * FROM Enery_Consumption
+LIMIT 0, 1000
+: Running...
+[115, 21:53:43] SELECT * FROM Enery_Consumption
+LIMIT 0, 1000
+: Error Code: 1146. Table 'cs306.enery_consumption' doesn't exist
+[116, 21:53:53] SELECT * FROM Energy_Consumption
+LIMIT 0, 1000
+: Running...
+[116, 21:53:53] SELECT * FROM Energy_Consumption
+LIMIT 0, 1000
+: Fetching...
+[116, 21:53:53] SELECT * FROM Energy_Consumption
+LIMIT 0, 1000
+: 1000 row(s) returned
+[117, 21:54:12] SELECT * FROM Energy_Production
+LIMIT 0, 1000
+: Running...
+[117, 21:54:12] SELECT * FROM Energy_Production
+LIMIT 0, 1000
+: Fetching...
+[117, 21:54:12] SELECT * FROM Energy_Production
+LIMIT 0, 1000
+: 1000 row(s) returned
+[118, 21:54:56] SELECT * FROM Yearly_Status
+LIMIT 0, 1000
+: Running...
+[118, 21:54:56] SELECT * FROM Yearly_Status
+LIMIT 0, 1000
+: Fetching...
+[118, 21:54:56] SELECT * FROM Yearly_Status
+LIMIT 0, 1000
+: 1000 row(s) returned
+[119, 21:55:29] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[119, 21:55:29] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[120, 21:55:29] SHOW DATABASES: Executing 
+[120, 21:55:29] SHOW DATABASES: OK
+[121, 21:55:32] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[121, 21:55:32] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[122, 21:55:32] SHOW COLUMNS FROM `CS306`.`access_to_electricity`: Executing 
+[122, 21:55:32] SHOW COLUMNS FROM `CS306`.`access_to_electricity`: OK
+[123, 21:58:55] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[123, 21:58:55] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[124, 21:58:55] SHOW DATABASES: Executing 
+[124, 21:58:55] SHOW DATABASES: OK
+[125, 21:58:59] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[125, 21:58:59] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[126, 21:58:59] SHOW COLUMNS FROM `CS306`.`co2_emissions`: Executing 
+[126, 21:58:59] SHOW COLUMNS FROM `CS306`.`co2_emissions`: OK
+[127, 21:59:43] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[127, 21:59:43] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[128, 21:59:43] SHOW DATABASES: Executing 
+[128, 21:59:43] SHOW DATABASES: OK
+[129, 21:59:46] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[129, 21:59:46] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[130, 21:59:46] SHOW COLUMNS FROM `CS306`.`co2_emissions`: Executing 
+[130, 21:59:46] SHOW COLUMNS FROM `CS306`.`co2_emissions`: OK
+[131, 22:01:39] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[131, 22:01:39] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[132, 22:01:39] SHOW DATABASES: Executing 
+[132, 22:01:39] SHOW DATABASES: OK
+[133, 22:01:42] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[133, 22:01:42] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[134, 22:01:42] SHOW COLUMNS FROM `CS306`.`co2_emissions`: Executing 
+[134, 22:01:42] SHOW COLUMNS FROM `CS306`.`co2_emissions`: OK
+[135, 22:01:55] PREPARE stmt FROM 'INSERT INTO `CS306`.`co2_emissions` (`iso_code`,`date`,`volume`) VALUES(?,?,?)': Executing 
+[135, 22:01:55] PREPARE stmt FROM 'INSERT INTO `CS306`.`co2_emissions` (`iso_code`,`date`,`volume`) VALUES(?,?,?)': OK
+[136, 22:02:47] DEALLOCATE PREPARE stmt: Executing 
+[136, 22:02:47] DEALLOCATE PREPARE stmt: OK
+[137, 22:04:35] SELECT * FROM CO2_emissions 
+WHERE iso_code = 'IND'
+LIMIT 0, 1000
+: Running...
+[137, 22:04:35] SELECT * FROM CO2_emissions 
+WHERE iso_code = 'IND'
+LIMIT 0, 1000
+: Fetching...
+[137, 22:04:35] SELECT * FROM CO2_emissions 
+WHERE iso_code = 'IND'
+LIMIT 0, 1000
+: 145 row(s) returned
+[138, 22:23:56] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[138, 22:23:56] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[139, 22:23:56] SHOW DATABASES: Executing 
+[139, 22:23:56] SHOW DATABASES: OK
+[140, 22:24:00] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[140, 22:24:00] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[141, 22:24:00] SHOW COLUMNS FROM `CS306`.`access_to_electricity`: Executing 
+[141, 22:24:00] SHOW COLUMNS FROM `CS306`.`access_to_electricity`: OK
+[142, 22:24:12] PREPARE stmt FROM 'INSERT INTO `CS306`.`access_to_electricity` (`iso_code`,`date`,`percentage`) VALUES(?,?,?)': Executing 
+[142, 22:24:12] PREPARE stmt FROM 'INSERT INTO `CS306`.`access_to_electricity` (`iso_code`,`date`,`percentage`) VALUES(?,?,?)': OK
+[143, 22:24:26] DEALLOCATE PREPARE stmt: Executing 
+[143, 22:24:26] DEALLOCATE PREPARE stmt: OK
+[144, 22:46:47] SElECT * FROM Energy_Consumption
+WHERE iso_code = 'USA'
+LIMIT 0, 1000
+: Running...
+[144, 22:46:47] SElECT * FROM Energy_Consumption
+WHERE iso_code = 'USA'
+LIMIT 0, 1000
+: Fetching...
+[144, 22:46:47] SElECT * FROM Energy_Consumption
+WHERE iso_code = 'USA'
+LIMIT 0, 1000
+: 57 row(s) returned
+[145, 22:47:00] SElECT * FROM Energy_Consumption
+WHERE iso_code = 'CHI'
+LIMIT 0, 1000
+: Running...
+[145, 22:47:00] SElECT * FROM Energy_Consumption
+WHERE iso_code = 'CHI'
+LIMIT 0, 1000
+: Fetching...
+[145, 22:47:00] SElECT * FROM Energy_Consumption
+WHERE iso_code = 'CHI'
+LIMIT 0, 1000
+: 0 row(s) returned
+[146, 22:47:31] SElECT * FROM Energy_Consumption
+WHERE iso_code = 'CHN'
+LIMIT 0, 1000
+: Running...
+[146, 22:47:31] SElECT * FROM Energy_Consumption
+WHERE iso_code = 'CHN'
+LIMIT 0, 1000
+: Fetching...
+[146, 22:47:31] SElECT * FROM Energy_Consumption
+WHERE iso_code = 'CHN'
+LIMIT 0, 1000
+: 57 row(s) returned
+[147, 22:47:46] SElECT * FROM Energy_Production
+WHERE iso_code = 'CHN'
+LIMIT 0, 1000
+: Running...
+[147, 22:47:46] SElECT * FROM Energy_Production
+WHERE iso_code = 'CHN'
+LIMIT 0, 1000
+: Fetching...
+[147, 22:47:46] SElECT * FROM Energy_Production
+WHERE iso_code = 'CHN'
+LIMIT 0, 1000
+: 37 row(s) returned
+[148, 22:48:10] DROP TABLE CO2_emissions: Running...
+[148, 22:48:10] DROP TABLE CO2_emissions: 0 row(s) affected
+[149, 22:48:37] CREATE TABLE CO2_emissions (
+    date INT NOT NULL,
+    volume BIGINT,
+    iso_code VARCHAR(5) NOT NULL,
+    PRIMARY KEY (iso_code, date),
+    FOREIGN KEY (iso_code) REFERENCES Countries(iso_code) ON DELETE CASCADE
+): Running...
+[149, 22:48:37] CREATE TABLE CO2_emissions (
+    date INT NOT NULL,
+    volume BIGINT,
+    iso_code VARCHAR(5) NOT NULL,
+    PRIMARY KEY (iso_code, date),
+    FOREIGN KEY (iso_code) REFERENCES Countries(iso_code) ON DELETE CASCADE
+): 0 row(s) affected
+[150, 22:49:04] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[150, 22:49:04] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[151, 22:49:04] SHOW DATABASES: Executing 
+[151, 22:49:04] SHOW DATABASES: OK
+[152, 22:49:08] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[152, 22:49:08] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[153, 22:49:08] SHOW COLUMNS FROM `CS306`.`co2_emissions`: Executing 
+[153, 22:49:08] SHOW COLUMNS FROM `CS306`.`co2_emissions`: OK
+[154, 22:49:18] PREPARE stmt FROM 'INSERT INTO `CS306`.`co2_emissions` (`iso_code`,`date`,`volume`) VALUES(?,?,?)': Executing 
+[154, 22:49:18] PREPARE stmt FROM 'INSERT INTO `CS306`.`co2_emissions` (`iso_code`,`date`,`volume`) VALUES(?,?,?)': OK
+[155, 22:50:09] DEALLOCATE PREPARE stmt: Executing 
+[155, 22:50:09] DEALLOCATE PREPARE stmt: OK
+[156, 22:50:47] SELECT * FROM CO2_emissions
+WHERE iso_code = 'IND'
+LIMIT 0, 1000
+: Running...
+[156, 22:50:47] SELECT * FROM CO2_emissions
+WHERE iso_code = 'IND'
+LIMIT 0, 1000
+: Fetching...
+[156, 22:50:47] SELECT * FROM CO2_emissions
+WHERE iso_code = 'IND'
+LIMIT 0, 1000
+: 153 row(s) returned
+[157, 22:50:58] SELECT * FROM CO2_emissions
+WHERE iso_code = 'USA'
+LIMIT 0, 1000
+: Running...
+[157, 22:50:58] SELECT * FROM CO2_emissions
+WHERE iso_code = 'USA'
+LIMIT 0, 1000
+: Fetching...
+[157, 22:50:58] SELECT * FROM CO2_emissions
+WHERE iso_code = 'USA'
+LIMIT 0, 1000
+: 222 row(s) returned
+[158, 22:51:08] SELECT * FROM CO2_emissions
+WHERE iso_code = 'ZIM'
+LIMIT 0, 1000
+: Running...
+[158, 22:51:08] SELECT * FROM CO2_emissions
+WHERE iso_code = 'ZIM'
+LIMIT 0, 1000
+: Fetching...
+[158, 22:51:08] SELECT * FROM CO2_emissions
+WHERE iso_code = 'ZIM'
+LIMIT 0, 1000
+: 0 row(s) returned
+[159, 22:51:24] SELECT * FROM CO2_emissions
+WHERE iso_code = 'ZWE'
+LIMIT 0, 1000
+: Running...
+[159, 22:51:24] SELECT * FROM CO2_emissions
+WHERE iso_code = 'ZWE'
+LIMIT 0, 1000
+: Fetching...
+[159, 22:51:24] SELECT * FROM CO2_emissions
+WHERE iso_code = 'ZWE'
+LIMIT 0, 1000
+: 119 row(s) returned
+[160, 22:51:52] SELECT * FROM CO2_emissions
+WHERE iso_code = 'TKM'
+LIMIT 0, 1000
+: Running...
+[160, 22:51:52] SELECT * FROM CO2_emissions
+WHERE iso_code = 'TKM'
+LIMIT 0, 1000
+: Fetching...
+[160, 22:51:52] SELECT * FROM CO2_emissions
+WHERE iso_code = 'TKM'
+LIMIT 0, 1000
+: 0 row(s) returned
+[161, 22:51:55] SELECT * FROM CO2_emissions
+WHERE iso_code = 'TKM'
+LIMIT 0, 1000
+: Running...
+[161, 22:51:55] SELECT * FROM CO2_emissions
+WHERE iso_code = 'TKM'
+LIMIT 0, 1000
+: Fetching...
+[161, 22:51:55] SELECT * FROM CO2_emissions
+WHERE iso_code = 'TKM'
+LIMIT 0, 1000
+: 0 row(s) returned
+[162, 22:52:05] SELECT * FROM CO2_emissions
+WHERE iso_code = 'TTO'
+LIMIT 0, 1000
+: Running...
+[162, 22:52:05] SELECT * FROM CO2_emissions
+WHERE iso_code = 'TTO'
+LIMIT 0, 1000
+: Fetching...
+[162, 22:52:05] SELECT * FROM CO2_emissions
+WHERE iso_code = 'TTO'
+LIMIT 0, 1000
+: 113 row(s) returned
+[163, 22:52:15] SELECT * FROM CO2_emissions
+WHERE iso_code = 'TON'
+LIMIT 0, 1000
+: Running...
+[163, 22:52:15] SELECT * FROM CO2_emissions
+WHERE iso_code = 'TON'
+LIMIT 0, 1000
+: Fetching...
+[163, 22:52:15] SELECT * FROM CO2_emissions
+WHERE iso_code = 'TON'
+LIMIT 0, 1000
+: 0 row(s) returned
+[1, 08:26:01] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[1, 08:26:01] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[2, 08:26:01] SHOW DATABASES: Executing 
+[2, 08:26:01] SHOW DATABASES: OK
+[3, 08:26:06] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[3, 08:26:06] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[4, 08:26:06] SHOW COLUMNS FROM `CS306`.`countries`: Executing 
+[4, 08:26:06] SHOW COLUMNS FROM `CS306`.`countries`: OK
+[5, 08:26:18] PREPARE stmt FROM 'INSERT INTO `CS306`.`countries` (`name`,`iso_code`) VALUES(?,?)': Executing 
+[5, 08:26:18] PREPARE stmt FROM 'INSERT INTO `CS306`.`countries` (`name`,`iso_code`) VALUES(?,?)': OK
+[6, 08:26:56] DEALLOCATE PREPARE stmt: Executing 
+[6, 08:26:56] DEALLOCATE PREPARE stmt: OK
+[7, 08:30:52] SELECT * FROM Countries
+LIMIT 0, 1000
+: Running...
+[7, 08:30:52] SELECT * FROM Countries
+LIMIT 0, 1000
+: Fetching...
+[7, 08:30:52] SELECT * FROM Countries
+LIMIT 0, 1000
+: 221 row(s) returned
+[8, 08:31:20] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[8, 08:31:20] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[9, 08:31:20] SHOW DATABASES: Executing 
+[9, 08:31:20] SHOW DATABASES: OK
+[10, 08:31:23] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[10, 08:31:23] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[11, 08:31:23] SHOW COLUMNS FROM `CS306`.`co2_emissions`: Executing 
+[11, 08:31:23] SHOW COLUMNS FROM `CS306`.`co2_emissions`: OK
+[12, 08:31:32] PREPARE stmt FROM 'INSERT INTO `CS306`.`co2_emissions` (`iso_code`,`date`,`volume`) VALUES(?,?,?)': Executing 
+[12, 08:31:32] PREPARE stmt FROM 'INSERT INTO `CS306`.`co2_emissions` (`iso_code`,`date`,`volume`) VALUES(?,?,?)': OK
+[13, 08:32:19] DEALLOCATE PREPARE stmt: Executing 
+[13, 08:32:19] DEALLOCATE PREPARE stmt: OK
+[14, 08:32:43] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[14, 08:32:43] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[15, 08:32:43] SHOW DATABASES: Executing 
+[15, 08:32:43] SHOW DATABASES: OK
+[16, 08:32:48] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[16, 08:32:48] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[17, 08:32:48] SHOW COLUMNS FROM `CS306`.`energy_consumption`: Executing 
+[17, 08:32:48] SHOW COLUMNS FROM `CS306`.`energy_consumption`: OK
+[18, 08:32:58] PREPARE stmt FROM 'INSERT INTO `CS306`.`energy_consumption` (`iso_code`,`date`,`amount`) VALUES(?,?,?)': Executing 
+[18, 08:32:58] PREPARE stmt FROM 'INSERT INTO `CS306`.`energy_consumption` (`iso_code`,`date`,`amount`) VALUES(?,?,?)': OK
+[19, 08:33:16] DEALLOCATE PREPARE stmt: Executing 
+[19, 08:33:16] DEALLOCATE PREPARE stmt: OK
+[20, 08:33:55] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[20, 08:33:55] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[21, 08:33:55] SHOW DATABASES: Executing 
+[21, 08:33:55] SHOW DATABASES: OK
+[22, 08:34:01] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[22, 08:34:01] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[23, 08:34:01] SHOW COLUMNS FROM `CS306`.`energy_production`: Executing 
+[23, 08:34:01] SHOW COLUMNS FROM `CS306`.`energy_production`: OK
+[24, 08:34:19] PREPARE stmt FROM 'INSERT INTO `CS306`.`energy_production` (`iso_code`,`date`,`fossil`,`nuclear`,`renewable`) VALUES(?,?,?,?,?)': Executing 
+[24, 08:34:19] PREPARE stmt FROM 'INSERT INTO `CS306`.`energy_production` (`iso_code`,`date`,`fossil`,`nuclear`,`renewable`) VALUES(?,?,?,?,?)': OK
+[25, 08:34:33] DEALLOCATE PREPARE stmt: Executing 
+[25, 08:34:33] DEALLOCATE PREPARE stmt: OK
+[26, 08:35:03] SELECT * FROM Yearly_Status
+LIMIT 0, 1000
+: Running...
+[26, 08:35:03] SELECT * FROM Yearly_Status
+LIMIT 0, 1000
+: Fetching...
+[26, 08:35:03] SELECT * FROM Yearly_Status
+LIMIT 0, 1000
+: 1000 row(s) returned
+[27, 08:35:27] SELECT * FROM  Countries
+LIMIT 0, 1000
+: Running...
+[27, 08:35:27] SELECT * FROM  Countries
+LIMIT 0, 1000
+: Fetching...
+[27, 08:35:27] SELECT * FROM  Countries
+LIMIT 0, 1000
+: 221 row(s) returned
+[28, 09:27:01] SELECT * FROM Yearly_Status
+WHERE iso_code = 'IND'
+LIMIT 0, 1000
+: Running...
+[28, 09:27:01] SELECT * FROM Yearly_Status
+WHERE iso_code = 'IND'
+LIMIT 0, 1000
+: Fetching...
+[28, 09:27:01] SELECT * FROM Yearly_Status
+WHERE iso_code = 'IND'
+LIMIT 0, 1000
+: 31 row(s) returned
+[29, 09:27:14] SELECT * FROM Yearly_Status
+WHERE iso_code = 'CHN'
+LIMIT 0, 1000
+: Running...
+[29, 09:27:14] SELECT * FROM Yearly_Status
+WHERE iso_code = 'CHN'
+LIMIT 0, 1000
+: Fetching...
+[29, 09:27:14] SELECT * FROM Yearly_Status
+WHERE iso_code = 'CHN'
+LIMIT 0, 1000
+: 31 row(s) returned
+[30, 09:29:46] SET GLOBAL general_log = 'ON': Running...
+[30, 09:29:46] SET GLOBAL general_log = 'ON': 0 row(s) affected
+[31, 09:40:44] DROP TABLE Access_to_Electricity: Running...
+[31, 09:40:44] DROP TABLE Access_to_Electricity: 0 row(s) affected
+[32, 09:41:31] DROP TABLE CO2_emissions: Running...
+[32, 09:41:31] DROP TABLE CO2_emissions: 0 row(s) affected
+[33, 09:41:37] DROP TABLE Countries: Running...
+[33, 09:41:37] DROP TABLE Countries: Error Code: 3730. Cannot drop table 'countries' referenced by a foreign key constraint 'yearly_status_ibfk_1' on table 'Yearly_Status'.
+[34, 09:41:51] DROP TABLE Energy_Consumption: Running...
+[34, 09:41:51] DROP TABLE Energy_Consumption: 0 row(s) affected
+[35, 09:42:00] DROP TABLE Energy_Production: Running...
+[35, 09:42:00] DROP TABLE Energy_Production: 0 row(s) affected
+[36, 09:42:09] DROP TABLE Yearly_Status: Running...
+[36, 09:42:09] DROP TABLE Yearly_Status: 0 row(s) affected
+[37, 09:42:15] DROP TABLE Countries: Running...
+[37, 09:42:15] DROP TABLE Countries: 0 row(s) affected
+[1, 09:42:58] CREATE TABLE Countries (
+    iso_code VARCHAR(5) NOT NULL UNIQUE,
+    name VARCHAR(45),
+    PRIMARY KEY (iso_code)
+): Running...
+[1, 09:42:58] CREATE TABLE Countries (
+    iso_code VARCHAR(5) NOT NULL UNIQUE,
+    name VARCHAR(45),
+    PRIMARY KEY (iso_code)
+): 0 row(s) affected
+[2, 09:42:58] CREATE TABLE Yearly_Status (
+    date INT NOT NULL,
+    population INT,
+    GDP BIGINT,
+    median_income INT,
+    iso_code VARCHAR(5) NOT NULL,
+    PRIMARY KEY (iso_code ,date),
+    FOREIGN KEY (iso_code) REFERENCES Countries(iso_code) ON DELETE CASCADE
+): Running...
+[2, 09:42:58] CREATE TABLE Yearly_Status (
+    date INT NOT NULL,
+    population INT,
+    GDP BIGINT,
+    median_income INT,
+    iso_code VARCHAR(5) NOT NULL,
+    PRIMARY KEY (iso_code ,date),
+    FOREIGN KEY (iso_code) REFERENCES Countries(iso_code) ON DELETE CASCADE
+): 0 row(s) affected
+[3, 09:42:58] CREATE TABLE Access_to_Electricity (
+    date INT NOT NULL,
+    percentage INT,
+    iso_code VARCHAR(5) NOT NULL,
+    PRIMARY KEY (iso_code, date),
+    FOREIGN KEY (iso_code) REFERENCES Countries(iso_code) ON DELETE CASCADE
+): Running...
+[3, 09:42:58] CREATE TABLE Access_to_Electricity (
+    date INT NOT NULL,
+    percentage INT,
+    iso_code VARCHAR(5) NOT NULL,
+    PRIMARY KEY (iso_code, date),
+    FOREIGN KEY (iso_code) REFERENCES Countries(iso_code) ON DELETE CASCADE
+): 0 row(s) affected
+[4, 09:42:58] CREATE TABLE CO2_emissions (
+    date INT NOT NULL,
+    volume BIGINT,
+    iso_code VARCHAR(5) NOT NULL,
+    PRIMARY KEY (iso_code, date),
+    FOREIGN KEY (iso_code) REFERENCES Countries(iso_code) ON DELETE CASCADE
+): Running...
+[4, 09:42:58] CREATE TABLE CO2_emissions (
+    date INT NOT NULL,
+    volume BIGINT,
+    iso_code VARCHAR(5) NOT NULL,
+    PRIMARY KEY (iso_code, date),
+    FOREIGN KEY (iso_code) REFERENCES Countries(iso_code) ON DELETE CASCADE
+): 0 row(s) affected
+[5, 09:42:58] CREATE TABLE Energy_Production (
+    date INT NOT NULL,
+    total_production INT,
+    fossil INT,
+    nuclear INT,
+    renewable INT,
+    iso_code VARCHAR(5) NOT NULL,
+    PRIMARY KEY (iso_code, date),
+    FOREIGN KEY (iso_code) REFERENCES Countries(iso_code) ON DELETE CASCADE
+): Running...
+[5, 09:42:58] CREATE TABLE Energy_Production (
+    date INT NOT NULL,
+    total_production INT,
+    fossil INT,
+    nuclear INT,
+    renewable INT,
+    iso_code VARCHAR(5) NOT NULL,
+    PRIMARY KEY (iso_code, date),
+    FOREIGN KEY (iso_code) REFERENCES Countries(iso_code) ON DELETE CASCADE
+): 0 row(s) affected
+[6, 09:42:58] CREATE TABLE Energy_Consumption (
+    date INT NOT NULL,
+    amount INT,
+    iso_code VARCHAR(5) NOT NULL,
+    PRIMARY KEY (iso_code, date),
+    FOREIGN KEY (iso_code) REFERENCES Countries(iso_code) ON DELETE CASCADE
+): Running...
+[6, 09:42:58] CREATE TABLE Energy_Consumption (
+    date INT NOT NULL,
+    amount INT,
+    iso_code VARCHAR(5) NOT NULL,
+    PRIMARY KEY (iso_code, date),
+    FOREIGN KEY (iso_code) REFERENCES Countries(iso_code) ON DELETE CASCADE
+): 0 row(s) affected
+[7, 09:43:28] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[7, 09:43:28] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[8, 09:43:28] SHOW DATABASES: Executing 
+[8, 09:43:28] SHOW DATABASES: OK
+[9, 09:43:33] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[9, 09:43:33] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[10, 09:43:33] SHOW COLUMNS FROM `CS306`.`countries`: Executing 
+[10, 09:43:33] SHOW COLUMNS FROM `CS306`.`countries`: OK
+[11, 09:43:50] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[11, 09:43:50] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[12, 09:43:50] SHOW DATABASES: Executing 
+[12, 09:43:50] SHOW DATABASES: OK
+[13, 09:43:53] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[13, 09:43:53] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[14, 09:43:53] SHOW COLUMNS FROM `CS306`.`countries`: Executing 
+[14, 09:43:53] SHOW COLUMNS FROM `CS306`.`countries`: OK
+[15, 09:44:02] PREPARE stmt FROM 'INSERT INTO `CS306`.`countries` (`name`,`iso_code`) VALUES(?,?)': Executing 
+[15, 09:44:02] PREPARE stmt FROM 'INSERT INTO `CS306`.`countries` (`name`,`iso_code`) VALUES(?,?)': OK
+[16, 09:44:49] DEALLOCATE PREPARE stmt: Executing 
+[16, 09:44:49] DEALLOCATE PREPARE stmt: OK
+[17, 09:45:04] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[17, 09:45:04] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[18, 09:45:04] SHOW DATABASES: Executing 
+[18, 09:45:04] SHOW DATABASES: OK
+[19, 09:45:08] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[19, 09:45:08] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[20, 09:45:08] SHOW COLUMNS FROM `CS306`.`co2_emissions`: Executing 
+[20, 09:45:08] SHOW COLUMNS FROM `CS306`.`co2_emissions`: OK
+[21, 09:45:17] PREPARE stmt FROM 'INSERT INTO `CS306`.`co2_emissions` (`iso_code`,`date`,`volume`) VALUES(?,?,?)': Executing 
+[21, 09:45:17] PREPARE stmt FROM 'INSERT INTO `CS306`.`co2_emissions` (`iso_code`,`date`,`volume`) VALUES(?,?,?)': OK
+[22, 09:46:21] DEALLOCATE PREPARE stmt: Executing 
+[22, 09:46:21] DEALLOCATE PREPARE stmt: OK
+[23, 09:47:05] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[23, 09:47:05] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[24, 09:47:05] SHOW DATABASES: Executing 
+[24, 09:47:05] SHOW DATABASES: OK
+[25, 09:47:08] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[25, 09:47:08] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[26, 09:47:08] SHOW COLUMNS FROM `CS306`.`countries`: Executing 
+[26, 09:47:08] SHOW COLUMNS FROM `CS306`.`countries`: OK
+[27, 09:47:18] PREPARE stmt FROM 'INSERT INTO `CS306`.`countries` (`name`,`iso_code`) VALUES(?,?)': Executing 
+[27, 09:47:18] PREPARE stmt FROM 'INSERT INTO `CS306`.`countries` (`name`,`iso_code`) VALUES(?,?)': OK
+[28, 09:47:37] DEALLOCATE PREPARE stmt: Executing 
+[28, 09:47:37] DEALLOCATE PREPARE stmt: OK
+[29, 09:47:48] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[29, 09:47:48] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[30, 09:47:48] SHOW DATABASES: Executing 
+[30, 09:47:48] SHOW DATABASES: OK
+[31, 09:47:56] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[31, 09:47:56] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[32, 09:47:56] SHOW COLUMNS FROM `CS306`.`energy_consumption`: Executing 
+[32, 09:47:56] SHOW COLUMNS FROM `CS306`.`energy_consumption`: OK
+[33, 09:48:07] PREPARE stmt FROM 'INSERT INTO `CS306`.`energy_consumption` (`iso_code`,`date`,`amount`) VALUES(?,?,?)': Executing 
+[33, 09:48:07] PREPARE stmt FROM 'INSERT INTO `CS306`.`energy_consumption` (`iso_code`,`date`,`amount`) VALUES(?,?,?)': OK
+[34, 09:48:29] DEALLOCATE PREPARE stmt: Executing 
+[34, 09:48:29] DEALLOCATE PREPARE stmt: OK
+[35, 09:48:55] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[35, 09:48:55] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[36, 09:48:55] SHOW DATABASES: Executing 
+[36, 09:48:55] SHOW DATABASES: OK
+[37, 09:49:00] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[37, 09:49:00] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[38, 09:49:00] SHOW COLUMNS FROM `CS306`.`countries`: Executing 
+[38, 09:49:00] SHOW COLUMNS FROM `CS306`.`countries`: OK
+[39, 09:49:08] PREPARE stmt FROM 'INSERT INTO `CS306`.`countries` (`name`,`iso_code`,`None`) VALUES(?,?,?)': Executing 
+[39, 09:49:08] PREPARE stmt FROM 'INSERT INTO `CS306`.`countries` (`name`,`iso_code`,`None`) VALUES(?,?,?)': Error Code: 1054
+Unknown column 'None' in 'field list'
+[40, 09:49:27] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[40, 09:49:27] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[41, 09:49:27] SHOW COLUMNS FROM `CS306`.`energy_production`: Executing 
+[41, 09:49:27] SHOW COLUMNS FROM `CS306`.`energy_production`: OK
+[42, 09:49:52] PREPARE stmt FROM 'INSERT INTO `CS306`.`energy_production` (`iso_code`,`date`,`fossil`,`nuclear`,`renewable`) VALUES(?,?,?,?,?)': Executing 
+[42, 09:49:52] PREPARE stmt FROM 'INSERT INTO `CS306`.`energy_production` (`iso_code`,`date`,`fossil`,`nuclear`,`renewable`) VALUES(?,?,?,?,?)': OK
+[43, 09:50:11] DEALLOCATE PREPARE stmt: Executing 
+[43, 09:50:11] DEALLOCATE PREPARE stmt: OK
+[44, 09:50:37] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[44, 09:50:37] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[45, 09:50:37] SHOW DATABASES: Executing 
+[45, 09:50:37] SHOW DATABASES: OK
+[46, 09:50:40] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[46, 09:50:40] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[47, 09:50:40] SHOW COLUMNS FROM `CS306`.`countries`: Executing 
+[47, 09:50:40] SHOW COLUMNS FROM `CS306`.`countries`: OK
+[48, 09:50:55] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[48, 09:50:55] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[49, 09:50:55] SHOW COLUMNS FROM `CS306`.`yearly_status`: Executing 
+[49, 09:50:55] SHOW COLUMNS FROM `CS306`.`yearly_status`: OK
+[50, 09:51:06] PREPARE stmt FROM 'INSERT INTO `CS306`.`yearly_status` (`iso_code`,`date`,`GDP`) VALUES(?,?,?)': Executing 
+[50, 09:51:06] PREPARE stmt FROM 'INSERT INTO `CS306`.`yearly_status` (`iso_code`,`date`,`GDP`) VALUES(?,?,?)': OK
+[51, 09:51:21] DEALLOCATE PREPARE stmt: Executing 
+[51, 09:51:21] DEALLOCATE PREPARE stmt: OK
+[52, 09:51:47] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[52, 09:51:47] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[53, 09:51:47] SHOW DATABASES: Executing 
+[53, 09:51:47] SHOW DATABASES: OK
+[54, 09:51:50] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[54, 09:51:50] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[55, 09:51:50] SHOW COLUMNS FROM `CS306`.`yearly_status`: Executing 
+[55, 09:51:50] SHOW COLUMNS FROM `CS306`.`yearly_status`: OK
+[56, 09:51:59] PREPARE stmt FROM 'INSERT INTO `CS306`.`yearly_status` (`iso_code`,`date`,`population`) VALUES(?,?,?)': Executing 
+[56, 09:51:59] PREPARE stmt FROM 'INSERT INTO `CS306`.`yearly_status` (`iso_code`,`date`,`population`) VALUES(?,?,?)': OK
+[57, 09:52:06] DEALLOCATE PREPARE stmt: Executing 
+[57, 09:52:06] DEALLOCATE PREPARE stmt: OK
+[58, 09:52:12] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[58, 09:52:12] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[59, 09:52:12] SHOW DATABASES: Executing 
+[59, 09:52:12] SHOW DATABASES: OK
+[60, 09:52:18] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[60, 09:52:18] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[61, 09:52:18] SHOW COLUMNS FROM `CS306`.`yearly_status`: Executing 
+[61, 09:52:18] SHOW COLUMNS FROM `CS306`.`yearly_status`: OK
+[62, 09:52:27] PREPARE stmt FROM 'INSERT INTO `CS306`.`yearly_status` (`iso_code`,`date`,`population`) VALUES(?,?,?)': Executing 
+[62, 09:52:27] PREPARE stmt FROM 'INSERT INTO `CS306`.`yearly_status` (`iso_code`,`date`,`population`) VALUES(?,?,?)': OK
+[63, 09:52:36] DEALLOCATE PREPARE stmt: Executing 
+[63, 09:52:36] DEALLOCATE PREPARE stmt: OK
+[64, 09:53:03] SELECT * FROM Yearly_Status
+LIMIT 0, 1000
+: Running...
+[64, 09:53:03] SELECT * FROM Yearly_Status
+LIMIT 0, 1000
+: Fetching...
+[64, 09:53:03] SELECT * FROM Yearly_Status
+LIMIT 0, 1000
+: 1000 row(s) returned
+[65, 10:31:04] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[65, 10:31:04] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[66, 10:31:04] SHOW DATABASES: Executing 
+[66, 10:31:04] SHOW DATABASES: OK
+[67, 10:31:28] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[67, 10:31:28] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[68, 10:31:28] SHOW COLUMNS FROM `CS306`.`yearly_status`: Executing 
+[68, 10:31:28] SHOW COLUMNS FROM `CS306`.`yearly_status`: OK
+[69, 10:31:44] PREPARE stmt FROM 'INSERT INTO `CS306`.`yearly_status` (`iso_code`,`date`,`population`) VALUES(?,?,?)': Executing 
+[69, 10:31:44] PREPARE stmt FROM 'INSERT INTO `CS306`.`yearly_status` (`iso_code`,`date`,`population`) VALUES(?,?,?)': OK
+[70, 10:31:50] DEALLOCATE PREPARE stmt: Executing 
+[70, 10:31:50] DEALLOCATE PREPARE stmt: OK
+[71, 10:35:00] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[71, 10:35:00] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[72, 10:35:00] SHOW DATABASES: Executing 
+[72, 10:35:00] SHOW DATABASES: OK
+[73, 10:35:14] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[73, 10:35:14] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[74, 10:35:14] SHOW COLUMNS FROM `CS306`.`yearly_status`: Executing 
+[74, 10:35:14] SHOW COLUMNS FROM `CS306`.`yearly_status`: OK
+[75, 10:35:29] TRUNCATE TABLE `CS306`.`yearly_status`: Executing 
+[75, 10:35:29] TRUNCATE TABLE `CS306`.`yearly_status`: OK
+[76, 10:35:29] PREPARE stmt FROM 'INSERT INTO `CS306`.`yearly_status` (`iso_code`,`date`,`population`) VALUES(?,?,?)': Executing 
+[76, 10:35:29] PREPARE stmt FROM 'INSERT INTO `CS306`.`yearly_status` (`iso_code`,`date`,`population`) VALUES(?,?,?)': OK
+[77, 10:35:37] DEALLOCATE PREPARE stmt: Executing 
+[77, 10:35:37] DEALLOCATE PREPARE stmt: OK
+[78, 10:35:54] SELECT * FROM Yearly_Status
+LIMIT 0, 1000
+: Running...
+[78, 10:35:54] SELECT * FROM Yearly_Status
+LIMIT 0, 1000
+: Fetching...
+[78, 10:35:54] SELECT * FROM Yearly_Status
+LIMIT 0, 1000
+: 1000 row(s) returned
+[79, 10:36:17] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[79, 10:36:17] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[80, 10:36:17] SHOW DATABASES: Executing 
+[80, 10:36:17] SHOW DATABASES: OK
+[81, 10:36:25] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[81, 10:36:25] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[82, 10:36:25] SHOW COLUMNS FROM `CS306`.`yearly_status`: Executing 
+[82, 10:36:25] SHOW COLUMNS FROM `CS306`.`yearly_status`: OK
+[83, 10:36:35] TRUNCATE TABLE `CS306`.`yearly_status`: Executing 
+[83, 10:36:35] TRUNCATE TABLE `CS306`.`yearly_status`: OK
+[84, 10:36:35] PREPARE stmt FROM 'INSERT INTO `CS306`.`yearly_status` (`iso_code`,`date`,`GDP`) VALUES(?,?,?)': Executing 
+[84, 10:36:35] PREPARE stmt FROM 'INSERT INTO `CS306`.`yearly_status` (`iso_code`,`date`,`GDP`) VALUES(?,?,?)': OK
+[85, 10:36:48] DEALLOCATE PREPARE stmt: Executing 
+[85, 10:36:48] DEALLOCATE PREPARE stmt: OK
+[86, 10:37:03] SELECT * FROM Yearly_Status
+LIMIT 0, 1000
+: Running...
+[86, 10:37:03] SELECT * FROM Yearly_Status
+LIMIT 0, 1000
+: Fetching...
+[86, 10:37:03] SELECT * FROM Yearly_Status
+LIMIT 0, 1000
+: 1000 row(s) returned
+[87, 10:37:28] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[87, 10:37:28] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[88, 10:37:28] SHOW DATABASES: Executing 
+[88, 10:37:28] SHOW DATABASES: OK
+[89, 10:37:34] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[89, 10:37:34] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[90, 10:37:34] SHOW COLUMNS FROM `CS306`.`yearly_status`: Executing 
+[90, 10:37:34] SHOW COLUMNS FROM `CS306`.`yearly_status`: OK
+[91, 10:37:44] PREPARE stmt FROM 'INSERT INTO `CS306`.`yearly_status` (`iso_code`,`date`,`population`) VALUES(?,?,?)': Executing 
+[91, 10:37:44] PREPARE stmt FROM 'INSERT INTO `CS306`.`yearly_status` (`iso_code`,`date`,`population`) VALUES(?,?,?)': OK
+[92, 10:37:51] DEALLOCATE PREPARE stmt: Executing 
+[92, 10:37:51] DEALLOCATE PREPARE stmt: OK
+[93, 10:37:57] SELECT * FROM Yearly_Status
+LIMIT 0, 1000
+: Running...
+[93, 10:37:57] SELECT * FROM Yearly_Status
+LIMIT 0, 1000
+: Fetching...
+[93, 10:37:57] SELECT * FROM Yearly_Status
+LIMIT 0, 1000
+: 1000 row(s) returned
+[94, 13:14:34] SELECT * FROM Access_to_Electricity
+LIMIT 0, 1000
+: Running...
+[94, 13:14:34] SELECT * FROM Access_to_Electricity
+LIMIT 0, 1000
+: Fetching...
+[94, 13:14:34] SELECT * FROM Access_to_Electricity
+LIMIT 0, 1000
+: 0 row(s) returned
+[95, 13:14:47] SELECT * FROM CO2_emissions
+LIMIT 0, 1000
+: Running...
+[95, 13:14:47] SELECT * FROM CO2_emissions
+LIMIT 0, 1000
+: Fetching...
+[95, 13:14:47] SELECT * FROM CO2_emissions
+LIMIT 0, 1000
+: 1000 row(s) returned
+[96, 13:15:07] SELECT * FROM CO2_emissions
+WHERE iso_code = 'CHN'
+LIMIT 0, 1000
+: Running...
+[96, 13:15:07] SELECT * FROM CO2_emissions
+WHERE iso_code = 'CHN'
+LIMIT 0, 1000
+: Fetching...
+[96, 13:15:07] SELECT * FROM CO2_emissions
+WHERE iso_code = 'CHN'
+LIMIT 0, 1000
+: 121 row(s) returned
+[97, 13:15:20] SHOW COLUMNS FROM `CS306`.`CO2_emissions`: Executing 
+[97, 13:15:20] SHOW COLUMNS FROM `CS306`.`CO2_emissions`: OK
+[98, 13:15:36] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[98, 13:15:36] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[99, 13:15:36] SHOW DATABASES: Executing 
+[99, 13:15:36] SHOW DATABASES: OK
+[100, 13:15:41] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[100, 13:15:41] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[101, 13:15:41] SHOW COLUMNS FROM `CS306`.`access_to_electricity`: Executing 
+[101, 13:15:41] SHOW COLUMNS FROM `CS306`.`access_to_electricity`: OK
+[102, 13:15:52] PREPARE stmt FROM 'INSERT INTO `CS306`.`access_to_electricity` (`iso_code`,`date`,`percentage`) VALUES(?,?,?)': Executing 
+[102, 13:15:53] PREPARE stmt FROM 'INSERT INTO `CS306`.`access_to_electricity` (`iso_code`,`date`,`percentage`) VALUES(?,?,?)': OK
+[103, 13:16:07] DEALLOCATE PREPARE stmt: Executing 
+[103, 13:16:07] DEALLOCATE PREPARE stmt: OK
+[104, 13:16:23] SELECT * FROM Access_to_Electricity
+WHERE iso_code = 'CHN'
+LIMIT 0, 1000
+: Running...
+[104, 13:16:23] SELECT * FROM Access_to_Electricity
+WHERE iso_code = 'CHN'
+LIMIT 0, 1000
+: Fetching...
+[104, 13:16:23] SELECT * FROM Access_to_Electricity
+WHERE iso_code = 'CHN'
+LIMIT 0, 1000
+: 21 row(s) returned
+[105, 13:16:31] SELECT * FROM Access_to_Electricity
+LIMIT 0, 1000
+: Running...
+[105, 13:16:31] SELECT * FROM Access_to_Electricity
+LIMIT 0, 1000
+: Fetching...
+[105, 13:16:31] SELECT * FROM Access_to_Electricity
+LIMIT 0, 1000
+: 1000 row(s) returned
+[106, 13:16:36] SELECT * FROM Access_to_Electricity
+LIMIT 0, 50000
+: Running...
+[106, 13:16:36] SELECT * FROM Access_to_Electricity
+LIMIT 0, 50000
+: Fetching...
+[106, 13:16:36] SELECT * FROM Access_to_Electricity
+LIMIT 0, 50000
+: 5692 row(s) returned
+[107, 13:16:57] SELECT iso_code FROM Access_to_Electricity
+LIMIT 0, 50000
+: Running...
+[107, 13:16:57] SELECT iso_code FROM Access_to_Electricity
+LIMIT 0, 50000
+: Fetching...
+[107, 13:16:57] SELECT iso_code FROM Access_to_Electricity
+LIMIT 0, 50000
+: 5692 row(s) returned
+[108, 13:17:07] SELECT iso_code, date FROM Access_to_Electricity
+LIMIT 0, 50000
+: Running...
+[108, 13:17:07] SELECT iso_code, date FROM Access_to_Electricity
+LIMIT 0, 50000
+: Fetching...
+[108, 13:17:07] SELECT iso_code, date FROM Access_to_Electricity
+LIMIT 0, 50000
+: 5692 row(s) returned
+[109, 13:17:17] SELECT iso_code, date FROM Access_to_Electricity
+LIMIT 0, 1000
+: Running...
+[109, 13:17:17] SELECT iso_code, date FROM Access_to_Electricity
+LIMIT 0, 1000
+: Fetching...
+[109, 13:17:17] SELECT iso_code, date FROM Access_to_Electricity
+LIMIT 0, 1000
+: 1000 row(s) returned
+[110, 13:17:21] SELECT * FROM Access_to_Electricity
+LIMIT 0, 1000
+: Running...
+[110, 13:17:21] SELECT * FROM Access_to_Electricity
+LIMIT 0, 1000
+: Fetching...
+[110, 13:17:21] SELECT * FROM Access_to_Electricity
+LIMIT 0, 1000
+: 1000 row(s) returned
+[111, 13:17:30] SELECT iso_code FROM Access_to_Electricity
+LIMIT 0, 1000
+: Running...
+[111, 13:17:30] SELECT iso_code FROM Access_to_Electricity
+LIMIT 0, 1000
+: Fetching...
+[111, 13:17:30] SELECT iso_code FROM Access_to_Electricity
+LIMIT 0, 1000
+: 1000 row(s) returned
+[112, 13:17:38] SELECT iso_code Unique FROM Access_to_Electricity: Running...
+[112, 13:17:38] SELECT iso_code Unique FROM Access_to_Electricity: Error Code: 1064. You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'Unique FROM Access_to_Electricity' at line 1
+[113, 13:18:13] SELECT DISTINCT iso_code  FROM Access_to_Electricity
+LIMIT 0, 1000
+: Running...
+[113, 13:18:13] SELECT DISTINCT iso_code  FROM Access_to_Electricity
+LIMIT 0, 1000
+: Fetching...
+[113, 13:18:13] SELECT DISTINCT iso_code  FROM Access_to_Electricity
+LIMIT 0, 1000
+: 209 row(s) returned
+[114, 13:18:25] SELECT DISTINCT iso_code.count()  FROM Access_to_Electricity
+LIMIT 0, 1000
+: Running...
+[114, 13:18:25] SELECT DISTINCT iso_code.count()  FROM Access_to_Electricity
+LIMIT 0, 1000
+: Error Code: 1630. FUNCTION iso_code.count does not exist. Check the 'Function Name Parsing and Resolution' section in the Reference Manual
+[115, 13:18:38] SELECT count(DISTINCT iso_code)  FROM Access_to_Electricity
+LIMIT 0, 1000
+: Running...
+[115, 13:18:38] SELECT count(DISTINCT iso_code)  FROM Access_to_Electricity
+LIMIT 0, 1000
+: Fetching...
+[115, 13:18:38] SELECT count(DISTINCT iso_code)  FROM Access_to_Electricity
+LIMIT 0, 1000
+: 1 row(s) returned
+[116, 13:18:48] SELECT count(DISTINCT iso_code)  FROM CO2_emissions
+LIMIT 0, 1000
+: Running...
+[116, 13:18:48] SELECT count(DISTINCT iso_code)  FROM CO2_emissions
+LIMIT 0, 1000
+: Fetching...
+[116, 13:18:48] SELECT count(DISTINCT iso_code)  FROM CO2_emissions
+LIMIT 0, 1000
+: 1 row(s) returned
+[117, 13:18:54] SELECT count(DISTINCT iso_code)  FROM Countries
+LIMIT 0, 1000
+: Running...
+[117, 13:18:54] SELECT count(DISTINCT iso_code)  FROM Countries
+LIMIT 0, 1000
+: Fetching...
+[117, 13:18:54] SELECT count(DISTINCT iso_code)  FROM Countries
+LIMIT 0, 1000
+: 1 row(s) returned
+[118, 13:19:02] SELECT count(DISTINCT iso_code)  FROM Energy_Consumption
+LIMIT 0, 1000
+: Running...
+[118, 13:19:02] SELECT count(DISTINCT iso_code)  FROM Energy_Consumption
+LIMIT 0, 1000
+: Fetching...
+[118, 13:19:02] SELECT count(DISTINCT iso_code)  FROM Energy_Consumption
+LIMIT 0, 1000
+: 1 row(s) returned
+[119, 13:19:10] SELECT count(DISTINCT iso_code)  FROM Energy_Production
+LIMIT 0, 1000
+: Running...
+[119, 13:19:10] SELECT count(DISTINCT iso_code)  FROM Energy_Production
+LIMIT 0, 1000
+: Fetching...
+[119, 13:19:10] SELECT count(DISTINCT iso_code)  FROM Energy_Production
+LIMIT 0, 1000
+: 1 row(s) returned
+[120, 13:19:18] SELECT count(DISTINCT iso_code)  FROM Yearly_Status
+LIMIT 0, 1000
+: Running...
+[120, 13:19:18] SELECT count(DISTINCT iso_code)  FROM Yearly_Status
+LIMIT 0, 1000
+: Fetching...
+[120, 13:19:18] SELECT count(DISTINCT iso_code)  FROM Yearly_Status
+LIMIT 0, 1000
+: 1 row(s) returned
+[121, 13:19:42] SELECT DISTINCT iso_code FROM Yearly_Status
+LIMIT 0, 1000
+: Running...
+[121, 13:19:42] SELECT DISTINCT iso_code FROM Yearly_Status
+LIMIT 0, 1000
+: Fetching...
+[121, 13:19:42] SELECT DISTINCT iso_code FROM Yearly_Status
+LIMIT 0, 1000
+: 183 row(s) returned
+[122, 13:54:52] LOAD DATA INFILE '/Users/student/Desktop/CS306 Files/population data final.csv'
+INTO TABLE Yearly_Status 
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS
+(date, population, GDP, median_income, iso_code): Running...
+[122, 13:54:52] LOAD DATA INFILE '/Users/student/Desktop/CS306 Files/population data final.csv'
+INTO TABLE Yearly_Status 
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS
+(date, population, GDP, median_income, iso_code): Error Code: 1290. The MySQL server is running with the --secure-file-priv option so it cannot execute this statement
+[123, 13:55:28] SHOW VARIABLES LIKE "secure_file_priv": Running...
+[123, 13:55:28] SHOW VARIABLES LIKE "secure_file_priv": Fetching...
+[123, 13:55:28] SHOW VARIABLES LIKE "secure_file_priv": 1 row(s) returned
+[124, 13:59:04] LOAD DATA LOCAL INFILE '/Users/student/Desktop/CS306 Files/population data final.csv'
+INTO TABLE Yearly_Status 
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS
+(date, population, GDP, median_income, iso_code): Running...
+[124, 13:59:04] LOAD DATA LOCAL INFILE '/Users/student/Desktop/CS306 Files/population data final.csv'
+INTO TABLE Yearly_Status 
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS
+(date, population, GDP, median_income, iso_code): Error Code: 3948. Loading local data is disabled; this must be enabled on both the client and server sides
+[125, 13:59:41] SET GLOBAL local_infile=1: Running...
+[125, 13:59:41] SET GLOBAL local_infile=1: 0 row(s) affected
+[126, 13:59:45] LOAD DATA LOCAL INFILE '/Users/student/Desktop/CS306 Files/population data final.csv'
+INTO TABLE Yearly_Status 
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS
+(date, population, GDP, median_income, iso_code): Running...
+[126, 13:59:45] LOAD DATA LOCAL INFILE '/Users/student/Desktop/CS306 Files/population data final.csv'
+INTO TABLE Yearly_Status 
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS
+(date, population, GDP, median_income, iso_code): Error Code: 2068. LOAD DATA LOCAL INFILE file request rejected due to restrictions on access.
+[127, 14:00:10] show global variables like 'local_infile': Running...
+[127, 14:00:10] show global variables like 'local_infile': Fetching...
+[127, 14:00:10] show global variables like 'local_infile': 1 row(s) returned
+[128, 14:08:56] LOAD DATA LOCAL INFILE '/Users/student/Desktop/CS306 Files/population data final.csv'
+INTO TABLE Yearly_Status 
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS
+(date, population, GDP, median_income, iso_code): Running...
+[128, 14:08:56] LOAD DATA LOCAL INFILE '/Users/student/Desktop/CS306 Files/population data final.csv'
+INTO TABLE Yearly_Status 
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS
+(date, population, GDP, median_income, iso_code): Error Code: 2068. LOAD DATA LOCAL INFILE file request rejected due to restrictions on access.
+[129, 14:09:04] LOAD DATA INFILE '/Users/student/Desktop/CS306 Files/population data final.csv'
+INTO TABLE Yearly_Status 
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS
+(date, population, GDP, median_income, iso_code): Running...
+[129, 14:09:04] LOAD DATA INFILE '/Users/student/Desktop/CS306 Files/population data final.csv'
+INTO TABLE Yearly_Status 
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS
+(date, population, GDP, median_income, iso_code): Error Code: 1290. The MySQL server is running with the --secure-file-priv option so it cannot execute this statement
+[1, 17:11:15] SELECT * FROM Yearly_Status
+LIMIT 0, 1000
+: Running...
+[1, 17:11:15] SELECT * FROM Yearly_Status
+LIMIT 0, 1000
+: Fetching...
+[1, 17:11:15] SELECT * FROM Yearly_Status
+LIMIT 0, 1000
+: 1000 row(s) returned
+[2, 17:12:41] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[2, 17:12:41] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[3, 17:12:41] SHOW DATABASES: Executing 
+[3, 17:12:41] SHOW DATABASES: OK
+[4, 17:12:54] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[4, 17:12:54] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[5, 17:12:54] SHOW COLUMNS FROM `CS306`.`yearly_status`: Executing 
+[5, 17:12:54] SHOW COLUMNS FROM `CS306`.`yearly_status`: OK
+[6, 17:13:09] PREPARE stmt FROM 'INSERT INTO `CS306`.`yearly_status` (`iso_code`,`date`,`population`) VALUES(?,?,?)': Executing 
+[6, 17:13:09] PREPARE stmt FROM 'INSERT INTO `CS306`.`yearly_status` (`iso_code`,`date`,`population`) VALUES(?,?,?)': OK
+[7, 17:13:16] DEALLOCATE PREPARE stmt: Executing 
+[7, 17:13:16] DEALLOCATE PREPARE stmt: OK
+[8, 18:02:45] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[8, 18:02:45] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[9, 18:02:45] SHOW DATABASES: Executing 
+[9, 18:02:45] SHOW DATABASES: OK
+[10, 18:02:49] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[10, 18:02:49] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[11, 18:02:49] SHOW COLUMNS FROM `CS306`.`yearly_status`: Executing 
+[11, 18:02:49] SHOW COLUMNS FROM `CS306`.`yearly_status`: OK
+[12, 18:03:29] TRUNCATE TABLE `CS306`.`yearly_status`: Executing 
+[12, 18:03:30] TRUNCATE TABLE `CS306`.`yearly_status`: OK
+[13, 18:03:30] PREPARE stmt FROM 'INSERT INTO `CS306`.`yearly_status` (`iso_code`,`date`,`GDP`,`population`) VALUES(?,?,?,?)': Executing 
+[13, 18:03:30] PREPARE stmt FROM 'INSERT INTO `CS306`.`yearly_status` (`iso_code`,`date`,`GDP`,`population`) VALUES(?,?,?,?)': OK
+[14, 18:03:45] DEALLOCATE PREPARE stmt: Executing 
+[14, 18:03:45] DEALLOCATE PREPARE stmt: OK
+[15, 18:04:44] SELECT * FROM Yearly_Status
+LIMIT 0, 1000
+: Running...
+[15, 18:04:44] SELECT * FROM Yearly_Status
+LIMIT 0, 1000
+: Fetching...
+[15, 18:04:44] SELECT * FROM Yearly_Status
+LIMIT 0, 1000
+: 1000 row(s) returned
+[16, 18:23:42] SELECT * FROM Access_to_Electricity
+LIMIT 0, 1000
+: Running...
+[16, 18:23:42] SELECT * FROM Access_to_Electricity
+LIMIT 0, 1000
+: Fetching...
+[16, 18:23:42] SELECT * FROM Access_to_Electricity
+LIMIT 0, 1000
+: 1000 row(s) returned
+[17, 18:23:52] SELECT * FROM CO2_emissions
+LIMIT 0, 1000
+: Running...
+[17, 18:23:52] SELECT * FROM CO2_emissions
+LIMIT 0, 1000
+: Fetching...
+[17, 18:23:52] SELECT * FROM CO2_emissions
+LIMIT 0, 1000
+: 1000 row(s) returned
+[18, 18:24:12] SELECT * FROM Countries
+LIMIT 0, 1000
+: Running...
+[18, 18:24:12] SELECT * FROM Countries
+LIMIT 0, 1000
+: Fetching...
+[18, 18:24:12] SELECT * FROM Countries
+LIMIT 0, 1000
+: 229 row(s) returned
+[19, 18:24:23] SELECT * FROM Energy_Consumption
+LIMIT 0, 1000
+: Running...
+[19, 18:24:23] SELECT * FROM Energy_Consumption
+LIMIT 0, 1000
+: Fetching...
+[19, 18:24:23] SELECT * FROM Energy_Consumption
+LIMIT 0, 1000
+: 1000 row(s) returned
+[20, 18:24:33] SELECT * FROM Energy_Production
+LIMIT 0, 1000
+: Running...
+[20, 18:24:33] SELECT * FROM Energy_Production
+LIMIT 0, 1000
+: Fetching...
+[20, 18:24:33] SELECT * FROM Energy_Production
+LIMIT 0, 1000
+: 1000 row(s) returned
+[21, 18:24:42] SELECT * FROM Yearly_Status
+LIMIT 0, 1000
+: Running...
+[21, 18:24:42] SELECT * FROM Yearly_Status
+LIMIT 0, 1000
+: Fetching...
+[21, 18:24:42] SELECT * FROM Yearly_Status
+LIMIT 0, 1000
+: 1000 row(s) returned
+[22, 12:45:05] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[22, 12:45:05] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[23, 12:45:05] SHOW DATABASES: Executing 
+[23, 12:45:05] SHOW DATABASES: OK
+[24, 12:45:13] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[24, 12:45:13] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[25, 12:45:13] SHOW COLUMNS FROM `CS306`.`energy_production`: Executing 
+[25, 12:45:13] SHOW COLUMNS FROM `CS306`.`energy_production`: OK
+[26, 12:45:43] TRUNCATE TABLE `CS306`.`energy_production`: Executing 
+[26, 12:45:43] TRUNCATE TABLE `CS306`.`energy_production`: OK
+[27, 12:45:43] PREPARE stmt FROM 'INSERT INTO `CS306`.`energy_production` (`iso_code`,`date`,`fossil`,`nuclear`,`renewable`,`total_production`) VALUES(?,?,?,?,?,?)': Executing 
+[27, 12:45:43] PREPARE stmt FROM 'INSERT INTO `CS306`.`energy_production` (`iso_code`,`date`,`fossil`,`nuclear`,`renewable`,`total_production`) VALUES(?,?,?,?,?,?)': OK
+[28, 12:46:02] DEALLOCATE PREPARE stmt: Executing 
+[28, 12:46:02] DEALLOCATE PREPARE stmt: OK
+[29, 12:49:43] SELECT * 
+FROM Energy_Production
+WHERE iso_code = 'SLB'
+LIMIT 0, 1000
+: Running...
+[29, 12:49:43] SELECT * 
+FROM Energy_Production
+WHERE iso_code = 'SLB'
+LIMIT 0, 1000
+: Fetching...
+[29, 12:49:43] SELECT * 
+FROM Energy_Production
+WHERE iso_code = 'SLB'
+LIMIT 0, 1000
+: 22 row(s) returned
+[30, 12:50:02] SELECT * 
+FROM Energy_Production
+WHERE iso_code = 'VCT'
+LIMIT 0, 1000
+: Running...
+[30, 12:50:02] SELECT * 
+FROM Energy_Production
+WHERE iso_code = 'VCT'
+LIMIT 0, 1000
+: Fetching...
+[30, 12:50:02] SELECT * 
+FROM Energy_Production
+WHERE iso_code = 'VCT'
+LIMIT 0, 1000
+: 22 row(s) returned
+[31, 12:50:13] SELECT * 
+FROM Energy_Production
+WHERE iso_code = 'ROU'
+LIMIT 0, 1000
+: Running...
+[31, 12:50:13] SELECT * 
+FROM Energy_Production
+WHERE iso_code = 'ROU'
+LIMIT 0, 1000
+: Fetching...
+[31, 12:50:13] SELECT * 
+FROM Energy_Production
+WHERE iso_code = 'ROU'
+LIMIT 0, 1000
+: 33 row(s) returned
+[32, 14:13:38] SELECT * 
+FROM Energy_Production
+LIMIT 0, 1000
+: Running...
+[32, 14:13:38] SELECT * 
+FROM Energy_Production
+LIMIT 0, 1000
+: Fetching...
+[32, 14:13:38] SELECT * 
+FROM Energy_Production
+LIMIT 0, 1000
+: 1000 row(s) returned
+[33, 14:13:47] SELECT * 
+FROM Yearly_Status
+LIMIT 0, 1000
+: Running...
+[33, 14:13:47] SELECT * 
+FROM Yearly_Status
+LIMIT 0, 1000
+: Fetching...
+[33, 14:13:47] SELECT * 
+FROM Yearly_Status
+LIMIT 0, 1000
+: 1000 row(s) returned
+[34, 14:13:56] SELECT * 
+FROM Energy_Consumption
+LIMIT 0, 1000
+: Running...
+[34, 14:13:56] SELECT * 
+FROM Energy_Consumption
+LIMIT 0, 1000
+: Fetching...
+[34, 14:13:56] SELECT * 
+FROM Energy_Consumption
+LIMIT 0, 1000
+: 1000 row(s) returned
+[35, 14:14:30] SELECT * 
+FROM Countries
+LIMIT 0, 1000
+: Running...
+[35, 14:14:30] SELECT * 
+FROM Countries
+LIMIT 0, 1000
+: Fetching...
+[35, 14:14:30] SELECT * 
+FROM Countries
+LIMIT 0, 1000
+: 229 row(s) returned
+[36, 14:14:39] SELECT * 
+FROM CO2_emissions
+LIMIT 0, 1000
+: Running...
+[36, 14:14:39] SELECT * 
+FROM CO2_emissions
+LIMIT 0, 1000
+: Fetching...
+[36, 14:14:39] SELECT * 
+FROM CO2_emissions
+LIMIT 0, 1000
+: 1000 row(s) returned
+[37, 14:14:50] SELECT * 
+FROM Access_to_Electricity
+LIMIT 0, 1000
+: Running...
+[37, 14:14:50] SELECT * 
+FROM Access_to_Electricity
+LIMIT 0, 1000
+: Fetching...
+[37, 14:14:50] SELECT * 
+FROM Access_to_Electricity
+LIMIT 0, 1000
+: 1000 row(s) returned
